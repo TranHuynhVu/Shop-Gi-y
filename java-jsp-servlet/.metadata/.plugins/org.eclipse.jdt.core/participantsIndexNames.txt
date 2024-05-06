@@ -1,0 +1,25 @@
+INDEX VERSION 1.134
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2907219278.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1836384896.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1971203274.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3649289468.index
+\shopbangiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\6417005.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1880864961.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4096237120.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\723247092.index
+\shopbangiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1726469949.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3592509478.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3063419432.index
+\shopgiay-jsp-servlet\src\main\java
+F:\Project-Java\java-jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\425227247.index
+\shopgiay-jsp-servlet\src\main\java

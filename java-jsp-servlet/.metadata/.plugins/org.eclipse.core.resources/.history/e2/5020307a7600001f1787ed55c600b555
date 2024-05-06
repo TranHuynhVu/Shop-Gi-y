@@ -1,0 +1,21 @@
+package com.shopgiay.util;
+
+public class SessionUtil {
+	private static SessionUtil sessionUtil = null;
+	
+	public static SessionUtil getSessionUtil() {
+		if(sessionUtil == null) {
+			sessionUtil = new SessionUtil();
+		}
+		return sessionUtil;
+	}
+	public void putValue() {
+		
+	}
+	public Object getValue() {
+		return null;
+	}
+	public void removeValue() {
+		
+	}
+}

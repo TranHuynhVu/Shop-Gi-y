@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value=""/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="js-show-sidebar"/>
+			<item value="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"/>
+			<item value="data-thumb"/>
+			<item value="slick3-dots"/>
+			<item value="item-slick3 slick-slide slick-current slick-active"/>
+			<item value="slick3 gallery-lb slick-initialized slick-slider slick-dotted"/>
+			<item value="presentation"/>
+			<item value="tablist"/>
+			<item value="slick-active"/>
+			<item value="js-hide-modal1"/>
+			<item value="js-show-modal1"/>
+			<item value=".js-show-modal1"/>
+			<item value="&lt;!-- Modal1 --&gt;"/>
+			<item value="wrap-modal1 js-modal1 p-t-60 p-b-20"/>
+			<item value="show-modal1"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1477"/>
+		<item key="DIALOG_Y_ORIGIN" value="208"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

@@ -1,0 +1,14 @@
+package com.shopgiay.dao.imple;
+
+import com.shopgiay.dao.Idao;
+import com.shopgiay.dao.MySQLDataAccess;
+
+public class daoColos implements Idao<COLORS>{
+	MySQLDataAccess con = null;
+	public static daoShoes getDaoShoes() {
+		return new daoShoes();
+	}
+	public daoShoes() {
+		con = new MySQLDataAccess();
+	}
+}

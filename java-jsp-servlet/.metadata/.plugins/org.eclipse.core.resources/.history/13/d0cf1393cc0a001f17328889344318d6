@@ -1,0 +1,44 @@
+package com.shopgiay.dao.imple;
+
+import java.util.ArrayList;
+
+import com.shopgiay.dao.Idao;
+import com.shopgiay.dao.MySQLDataAccess;
+import com.shopgiay.model.COLORS;
+
+public class daoColos implements Idao<COLORS>{
+
+	@Override
+	public int Insert(COLORS t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int Update(COLORS t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int Delete(COLORS t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<COLORS> SelectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public COLORS SelectByID(COLORS t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+	
+}

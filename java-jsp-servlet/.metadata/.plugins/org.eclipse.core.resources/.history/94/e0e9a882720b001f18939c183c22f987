@@ -1,0 +1,22 @@
+package com.shopgiay.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ACTION {
+	private String ACTION;
+
+	public ACTION(String ACTION) {
+		this.ACTION = ACTION;
+	}
+
+	public String getAction() {
+		return ACTION;
+	}
+
+	public void setAction(String action) {
+		this.ACTION = action;
+	}
+	
+	
+}
