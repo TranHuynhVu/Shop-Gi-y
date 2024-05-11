@@ -48,7 +48,7 @@
 
 				<!-- Search product -->
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<form tyle id="myForm" action="/shopbangiay-jsp-servlet/product"
+					<form tyle id="myForm" action="/product"
 						method="post">
 						<div class="bor8 dis-flex p-l-15">
 

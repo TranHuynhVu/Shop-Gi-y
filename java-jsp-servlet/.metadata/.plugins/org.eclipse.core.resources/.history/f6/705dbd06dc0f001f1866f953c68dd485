@@ -44,7 +44,5 @@ public class NewService {
 	public ArrayList<DETAIL_SHOES> getDFFilter(String sql){
 		return daoDetail_Shoes.getdaoDetail_Shoes().SelectAllBySortPriceColor(sql);
 	}
-	public ArrayList<DETAIL_SHOES> SelctByIdNameDF(String name){
-		return daoDetail_Shoes.getdaoDetail_Shoes().SelectAllByName(name);
-	}
+	
 }

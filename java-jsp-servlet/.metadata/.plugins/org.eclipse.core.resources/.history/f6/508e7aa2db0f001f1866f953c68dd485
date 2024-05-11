@@ -105,24 +105,8 @@ public class ProductController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String nameShoe = request.getParameter("search-product");
-		System.out.println(nameShoe);
-		if(nameShoe != null) {
-			ArrayList<DETAIL_SHOES> arrShoes = NewService.getNewService().SelctByIdNameDF(nameShoe);
-			ArrayList<SHOES> arrShoesCate = NewService.getNewService().getShoesSelectAll();
-			ArrayList<CATEGORIES> arrCategories = NewService.getNewService().getCategoriesSelectAll();
-			
-			request.setAttribute("listShoesCate", arrShoesCate);
-			request.setAttribute("listCategories", arrCategories);
-			request.setAttribute("listShoes", arrShoes);
-			request.setAttribute("activeMenu", "product");
-			
-			
-			request.setAttribute("filtersort", "Default");
-			request.setAttribute("filterprice", "all");
-			RequestDispatcher rd = request.getRequestDispatcher("/views/web/product.jsp");
-			rd.forward(request, response);
-		}
+		String searchproduct = request.getParameter("search-product");
+		System.out.println(searchproduct);
 	}
 
 

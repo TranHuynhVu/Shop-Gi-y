@@ -88,28 +88,4 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 		con.CloseConetion();
 		return arr;
 	}
-	public ArrayList<DETAIL_SHOES> SelectAllByName(String name) {
-		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
-		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail, SH.NAMEE AS Ten_shoes, DS.PRICE AS Gia,\r\n"
-				+ "    (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images\r\n"
-				+ "FROM DETAIL_SHOES DS\r\n"
-				+ "JOIN SHOES SH ON DS.ID_SHOE = SH.ID\r\n"
-				+ "WHERE SH.NAMEE LIKE '%"+name+"%'";
-		ResultSet rs = con.getResultSet(sql);
-		try {
-			while (rs.next()) {
-				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();
-				detail_SHOES.setID(rs.getInt("Ma_Detail"));
-				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
-				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
-				detail_SHOES.setPRICE(rs.getDouble("Gia"));
-				detail_SHOES.setIMAGE(rs.getString("images"));
-				arr.add(detail_SHOES);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		con.CloseConetion();
-		return arr;
-	}
 }

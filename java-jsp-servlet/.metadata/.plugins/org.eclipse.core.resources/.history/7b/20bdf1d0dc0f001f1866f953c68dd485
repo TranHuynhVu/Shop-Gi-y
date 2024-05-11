@@ -94,8 +94,9 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 				+ "    (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images\r\n"
 				+ "FROM DETAIL_SHOES DS\r\n"
 				+ "JOIN SHOES SH ON DS.ID_SHOE = SH.ID\r\n"
-				+ "WHERE SH.NAMEE LIKE '%"+name+"%'";
-		ResultSet rs = con.getResultSet(sql);
+				+ "WHERE SH.NAMEE LIKE '%?%'";
+		ResultSet rs = con.getResultSet(sql,name);
+		
 		try {
 			while (rs.next()) {
 				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();

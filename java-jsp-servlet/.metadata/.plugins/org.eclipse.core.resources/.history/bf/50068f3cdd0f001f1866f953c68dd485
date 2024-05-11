@@ -116,10 +116,6 @@ public class ProductController extends HttpServlet {
 			request.setAttribute("listCategories", arrCategories);
 			request.setAttribute("listShoes", arrShoes);
 			request.setAttribute("activeMenu", "product");
-			
-			
-			request.setAttribute("filtersort", "Default");
-			request.setAttribute("filterprice", "all");
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/product.jsp");
 			rd.forward(request, response);
 		}
