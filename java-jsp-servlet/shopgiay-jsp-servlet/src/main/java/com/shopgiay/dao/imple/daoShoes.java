@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import com.shopgiay.dao.Idao;
 import com.shopgiay.dao.MySQLDataAccess;
 import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.SHOES;
 import com.shopgiay.model.SIZES;
 
@@ -42,7 +43,30 @@ public class daoShoes implements Idao<SHOES>{
 
 	@Override
 	public ArrayList<SHOES> SelectAll() {
-		return null;
+		ArrayList<SHOES> arr = new ArrayList<SHOES>();
+		String sql = "SELECT \r\n"
+				+ "    SH.ID AS Ma_Giay,\r\n"
+				+ "    CAT.NAMEE AS Ten_Categories\r\n"
+				+ "FROM \r\n"
+				+ "    SHOES SH\r\n"
+				+ "JOIN \r\n"
+				+ "    DETAIL_CATEGORIES DC ON SH.ID = DC.ID_SHOE\r\n"
+				+ "JOIN \r\n"
+				+ "    CATEGORIES CAT ON DC.ID_CATEGORY = CAT.ID;";
+		ResultSet rs = con.getResultSet(sql);
+		
+		try {
+			while (rs.next()) {
+				SHOES shoes = new SHOES();
+				shoes.setID(rs.getInt("Ma_Giay"));
+				shoes.setNAMEECATE(rs.getString("Ten_Categories"));
+				arr.add(shoes);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return arr;
 	}
 
 	@Override

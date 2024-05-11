@@ -1,6 +1,6 @@
 package com.shopgiay.model;
 
-public class SHOES {
+public class SHOES  extends CATEGORIES{
 	private int ID ;
 	private String NAMEE;
 	private String DETAIL;
@@ -63,5 +63,6 @@ public class SHOES {
 	public void setID_TRADEMARK(int iD_TRADEMARK) {
 		ID_TRADEMARK = iD_TRADEMARK;
 	}
+
 	
 }

@@ -29,7 +29,7 @@ public class MySQLDataAccess {
 	public MySQLDataAccess() {
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-			String url = "jdbc:mysql://127.0.0.1:3306/QUANLYSHOPGIAY";
+			String url = "jdbc:mysql://127.0.0.1:3306/SHOPGIAY";
 			String username = "root";
 			String password = "1234567890";
 

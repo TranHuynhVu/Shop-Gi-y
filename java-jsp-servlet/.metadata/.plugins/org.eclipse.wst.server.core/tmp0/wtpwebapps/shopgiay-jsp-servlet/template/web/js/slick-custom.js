@@ -141,7 +141,7 @@
         
         /*==================================================================
         [ Slick3 ]*/
-        $('.wrap-slick3').each(function(){
+/*        $('.wrap-slick3').each(function(){
             $(this).find('.slick3').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -163,8 +163,8 @@
                     return '<img src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
                 },  
             });
-        });
-            
+        });*/
+           
                 
 
 })(jQuery);

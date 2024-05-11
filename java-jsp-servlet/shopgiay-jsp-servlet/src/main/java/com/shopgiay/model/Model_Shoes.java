@@ -4,14 +4,27 @@ public class Model_Shoes {
 	private String SIZE;
 	private String COLOR;
 	private String NAME;
+	private String IMAGE;
 	
+
+	public String getIMAGE() {
+		return IMAGE;
+	}
+	public void setIMAGE(String image) {
+		this.IMAGE = image;
+	}
 	public Model_Shoes() {
 		super();
 	}
-	public Model_Shoes(String SIZE, String COLOR, String NAME) {
-		this.SIZE = SIZE;
-		this.COLOR = COLOR;
-		this.NAME = NAME;
+
+
+	public Model_Shoes(String sIZE, String cOLOR, String nAME, String iMAGE) {
+		super();
+		SIZE = sIZE;
+		COLOR = cOLOR;
+		NAME = nAME;
+		IMAGE = iMAGE;
+
 	}
 	public String getSIZE() {
 		return SIZE;

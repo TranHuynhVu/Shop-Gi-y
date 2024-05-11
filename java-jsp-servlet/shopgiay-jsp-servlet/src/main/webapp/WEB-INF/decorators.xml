@@ -6,7 +6,7 @@
 	</excludes>
 	
     <decorator name="web" page="web.jsp">
-       <pattern>/trang-chu*</pattern>
+       <pattern>/*</pattern>
     </decorator>
     
     <decorator name="admin" page="admin.jsp">

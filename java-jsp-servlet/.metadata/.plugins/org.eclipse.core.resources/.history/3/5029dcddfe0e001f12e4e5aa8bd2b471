@@ -1,0 +1,36 @@
+package com.shopgiay.model;
+
+public class CATEGORIES {
+	 private int ID;
+	 private String NAMEE;
+	 private boolean STATUSS;
+	 
+	public CATEGORIES(int iD, String nAMEE, boolean sTATUSS) {
+		super();
+		ID = iD;
+		NAMEE = nAMEE;
+		STATUSS = sTATUSS;
+	}
+	public CATEGORIES() {
+		super();
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public String getNAMEE() {
+		return NAMEE;
+	}
+	public void setNAMEE(String nAMEE) {
+		NAMEE = nAMEE;
+	}
+	public boolean isSTATUSS() {
+		return STATUSS;
+	}
+	public void setSTATUSS(boolean sTATUSS) {
+		STATUSS = sTATUSS;
+	}
+	 
+}

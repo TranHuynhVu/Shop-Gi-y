@@ -50,10 +50,10 @@
 
 	
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
 <!--===============================================================================================-->	
-	<%-- <script src="<c:url value='/template/web/vendor/jquery/jquery-3.2.1.min.js'/>"></script> --%>
+	<script src="<c:url value='/template/web/vendor/jquery/jquery-3.2.1.min.js'/>"></script> 
 <!--===============================================================================================-->
 	<script src="<c:url value='/template/web/vendor/animsition/js/animsition.min.js'/>"></script>
 <!--===============================================================================================-->
@@ -99,11 +99,53 @@
 <!--===============================================================================================-->
 	<script src="<c:url value='/template/web/vendor/sweetalert/sweetalert.min.js'/>"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
+		$('.js-addwish-b2').on('click', function(e) {
+			e.preventDefault();
+			var id = $(this).data('id');
+			var idshoes = $(this).data('idshoes');
+			var nameShoe = $(this).data('nameshoes');
+			var price = $(this).data('price');
+			// Tạo một đối tượng JSON chứa các giá trị của các biến
+			var data = {
+				"ID": id,
+				"ID_SHOE": idshoes,
+				"NAME": nameShoe,
+				"PRICE": price,
+				"ACTION": "ClickTym"
+			};
+			console.log(data)
+			$.ajax({
+				type: "POST", // hoặc "GET" tùy thuộc vào cách bạn cấu hình máy chủ
+				url: "/shopbangiay-jsp-servlet/api-web-new", // Thay đổi "your-server-url" thành URL của máy chủ của bạn
+				data: JSON.stringify(data),
+				contentType: "application/json",
+				dataType: "json",
+				success: function(response) {
+					console.log(response)
+					if (response.ACC != null) {
+						var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+						$(this).on('click', function() {
+							swal(nameProduct, "is added to wishlist !", "success");
+	
+							$(this).addClass('js-addedwish-b2');
+							$(this).off('click');
+						});
+					} else {
+						alert("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
+						console.log("Vui lòng đăng nhập để xem chi tiết sản phẩm.")
+					}
+				},
+				error: function(xhr, status, error) {
+					console.error("Error sending data:", error);
+				}
+			});
+		});
+		
+/* 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
 		});
-
-		$('.js-addwish-b2').each(function(){
+ */
+/* 		$('.js-addwish-b2').each(function(){
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to wishlist !", "success");
@@ -111,7 +153,7 @@
 				$(this).addClass('js-addedwish-b2');
 				$(this).off('click');
 			});
-		});
+		}); */
 
 		$('.js-addwish-detail').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();

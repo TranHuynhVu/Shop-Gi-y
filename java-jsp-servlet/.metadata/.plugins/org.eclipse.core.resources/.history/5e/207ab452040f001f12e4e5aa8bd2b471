@@ -1,0 +1,84 @@
+package com.shopgiay.controller.web;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shopgiay.dao.imple.daoAccounts;
+import com.shopgiay.dao.imple.daoDetail_Shoes;
+import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.CATEGORIES;
+import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.SHOES;
+import com.shopgiay.model.UserModel;
+import com.shopgiay.service.NewService;
+import com.shopgiay.util.FormUtil;
+import com.shopgiay.util.SessionUtil;
+
+/**
+ * Servlet implementation class HomeController
+ */
+@WebServlet(urlPatterns = {"/trang-chu","/dang-nhap","/thoat"})
+public class HomeController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		if(action != null && action.equals("login")) {
+			String message = request.getParameter("message");
+			String alert = request.getParameter("alert");
+			if(message != null & alert != null) {
+				request.setAttribute("message", resourceBundle.getString(message));
+				request.setAttribute("alert", alert);
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/views/login/login.jsp");
+			rd.forward(request, response);
+		}else if(action != null && action.equals("logout")){
+			SessionUtil.getSessionUtil().removeValue(request, "ACC");
+			response.sendRedirect(request.getContextPath() + "/trang-chu");
+		}else {
+			 ArrayList<DETAIL_SHOES> arrShoes = NewService.getNewService().getShoes();
+			 ArrayList<SHOES> arrShoesCate = NewService.getNewService().getShoesSelectAll();
+			 ArrayList<CATEGORIES> arrCategories = NewService.getNewService().getCategoriesSelectAll();
+		     for (DETAIL_SHOES detail_SHOES : arrShoes) {
+		         System.out.println(detail_SHOES);
+		     }
+		     request.setAttribute("listShoesCate", arrShoesCate);
+		     request.setAttribute("listCategories", arrCategories);
+		     request.setAttribute("listShoes", arrShoes);
+		     request.setAttribute("activeMenu", "home");
+		     RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+		     rd.forward(request, response);
+		}	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		if(action != null && action.equals("login")) {
+			ACCOUNTS accounts = FormUtil.toModel(ACCOUNTS.class, request);
+			accounts = daoAccounts.getDaoAccounts().SelectByID(accounts);
+			if(accounts != null) {
+				SessionUtil.getSessionUtil().putValue(request, "ACC", accounts);
+				if(accounts.getPOSITION().equals("Admin")) {
+					response.sendRedirect(request.getContextPath() + "/admin-home");
+				}else if(accounts.getPOSITION().equals("User")){
+					response.sendRedirect(request.getContextPath() + "/trang-chu");
+					
+				}
+				
+			}else {
+				response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
+			}
+		}
+	}
+
+}

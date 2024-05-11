@@ -1,0 +1,128 @@
+package com.shopgiay.controller.web.api;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.SHOES;
+import com.shopgiay.service.NewService;
+import com.shopgiay.util.JsonUtil;
+
+/**
+ * Servlet implementation class ProductApi
+ */
+@WebServlet("/api-web-product")
+public class ProductApi extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		Map<String, Object> obMap = new HashMap<String, Object>();
+		JSONObject object = JsonUtil.of(request.getReader()).getObject();
+		String sort = object.getString("filter0");
+		String price = object.getString("filter1");
+		if (sort != null) {
+			switch (sort) {
+			case "Default":
+				sort = "";
+				break;
+			case "Average rating":
+				sort = "";
+				break;
+			case "Price: Low to High":
+				sort = "asc";
+				break;
+			case "Price: High to Low":
+				sort = "desc";
+				break;
+			}
+		}
+		if (price != null) {
+			switch (price) {
+			case "All":
+				price = ">0";
+				break;
+			case "$0 - $100":
+				price = "BETWEEN 0 AND 100";
+				break;
+			case "$100 - $200":
+				price = "BETWEEN 100 AND 200";
+				break;
+			case "$200 - $300":
+				price = "BETWEEN 200 AND 300";
+				break;
+			case "$300+":
+				price = ">300";
+				break;
+			}
+		}
+
+		System.out.println(sort + "," + price);
+		String sql = "SELECT DISTINCT  DS.ID_SHOE, DS.ID AS Ma_Detail, SH.NAMEE AS Ten_shoes, DS.PRICE AS Gia,\r\n"
+				+ "    (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images\r\n"
+				+ "FROM DETAIL_SHOES DS\r\n" + "JOIN SHOES SH ON DS.ID_SHOE = SH.ID\r\n"
+				+ "JOIN DETAIL_COLORS DC ON DS.ID = DC.ID_DETAIL_SHOE\r\n" + "JOIN COLORS C ON DC.ID_COLOR = C.ID\r\n"
+				+ "WHERE DS.PRICE " + price + "\r\n" + "ORDER BY DS.PRICE " + sort + "";
+
+		ArrayList<DETAIL_SHOES> arrShoes = NewService.getNewService().getDFFilter(sql);
+		ArrayList<SHOES> arrShoesCate = NewService.getNewService().getShoesSelectAll();
+
+		String html = "";
+		
+		for (DETAIL_SHOES df : arrShoes) {
+			String nameString = "";
+			for (SHOES shoes : arrShoesCate) {
+				if(shoes.getID() == df.getID_SHOE()) {
+					nameString = shoes.getNAMEECATE();
+					break;
+				}
+			}
+			html = "<div class=\"producttt col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item "+nameString+"";
+			html += "\">"
+			        + "<div class=\"block2\">"
+			        + "<div class=\"block2-pic hov-img0\">"
+			        + "<img src=\""+df.getIMAGE()+" \" alt=\"IMG-PRODUCT\">"
+			        + "<a href=\"#\" class=\"block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1\" data-price=\""+df.getPRICE()+"\" data-idshoes=\"${list.getID_SHOE()}\" data-id=\"${list.getID()}\" data-nameshoes=\"${list.getNAME()}\"> Quick View </a>"
+			        + "</div>"
+			        + "<div class=\"block2-txt flex-w flex-t p-t-14\">"
+			        + "<div class=\"block2-txt-child1 flex-col-l \">"
+			        + "<a href=\"product-detail.html\" class=\"stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6\">${list.getNAME()}</a>"
+			        + "<span class=\"stext-105 cl3\">$${list.getPRICE()}</span>"
+			        + "</div>"
+			        + "<div class=\"block2-txt-child2 flex-r p-t-3\">"
+			        + "<a href=\"#\" data-price=\"${list.getPRICE()}\" data-id=\"${list.getID()}\" data-idshoes=\"${list.getID_SHOE()}\" data-nameshoes=\"${list.getNAME()}\" class=\"btn-addwish-b2 dis-block pos-relative js-addwish-b2\">"
+			        + "<img class=\"icon-heart1 dis-block trans-04\" src=\"<c:url value='/template/web/images/icons/icon-heart-01.png'/>\" alt=\"ICON\">"
+			        + "<img class=\"icon-heart2 dis-block trans-04 ab-t-l\" src=\"<c:url value='/template/web/images/icons/icon-heart-02.png'/>\" alt=\"ICON\">"
+			        + "</a>"
+			        + "</div>"
+			        + "</div>"
+			        + "</div>"
+			        + "</div>";
+			
+		}
+		
+		obMap.put("aa", sort + price);
+
+		mapper.writeValue(response.getOutputStream(), obMap);
+	}
+}

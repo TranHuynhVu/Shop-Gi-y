@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.shopgiay.dao.imple.daoAccounts;
 import com.shopgiay.dao.imple.daoDetail_Shoes;
 import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.CATEGORIES;
 import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.SHOES;
 import com.shopgiay.model.UserModel;
+import com.shopgiay.service.NewService;
 import com.shopgiay.util.FormUtil;
 import com.shopgiay.util.SessionUtil;
 
@@ -43,19 +46,17 @@ public class HomeController extends HttpServlet {
 			SessionUtil.getSessionUtil().removeValue(request, "ACC");
 			response.sendRedirect(request.getContextPath() + "/trang-chu");
 		}else {
-			 ArrayList<DETAIL_SHOES> arrShoes = daoDetail_Shoes.getdaoDetail_Shoes().SelectAll();
-		        for (DETAIL_SHOES detail_SHOES : arrShoes) {
-		            System.out.println(detail_SHOES);
-		        }
+			 ArrayList<DETAIL_SHOES> arrShoes = NewService.getNewService().getShoes();
+			 ArrayList<SHOES> arrShoesCate = NewService.getNewService().getShoesSelectAll();
+			 ArrayList<CATEGORIES> arrCategories = NewService.getNewService().getCategoriesSelectAll();
 
-		        request.setAttribute("listShoes", arrShoes);
-		        
-		        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
-		        rd.forward(request, response);
-		}
-		
-		
-		
+		     request.setAttribute("listShoesCate", arrShoesCate);
+		     request.setAttribute("listCategories", arrCategories);
+		     request.setAttribute("listShoes", arrShoes);
+		     request.setAttribute("activeMenu", "home");
+		     RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+		     rd.forward(request, response);
+		}	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

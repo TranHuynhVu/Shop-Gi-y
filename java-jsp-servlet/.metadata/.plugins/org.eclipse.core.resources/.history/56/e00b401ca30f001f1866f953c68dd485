@@ -1,0 +1,119 @@
+package com.shopgiay.controller.web;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ResourceBundle;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shopgiay.model.CATEGORIES;
+import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.SHOES;
+import com.shopgiay.service.NewService;
+import com.shopgiay.util.SessionUtil;
+
+@WebServlet(urlPatterns = { "/product" })
+public class ProductController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String filtersort = request.getParameter("filtersort");
+		String filterprice = request.getParameter("filterprice");
+		String filtercolor = request.getParameter("filtercolor"); // Thêm điều kiện lọc màu sắc
+
+		ArrayList<DETAIL_SHOES> arrShoes = NewService.getNewService().getShoes();
+		ArrayList<SHOES> arrShoesCate = NewService.getNewService().getShoesSelectAll();
+		ArrayList<CATEGORIES> arrCategories = NewService.getNewService().getCategoriesSelectAll();
+
+		// Sắp xếp danh sách giày dựa trên filtersort
+		if (filtersort != null) {
+			switch (filtersort) {
+			case "PriceLowtoHigh":
+				Collections.sort(arrShoes, Comparator.comparingDouble(DETAIL_SHOES::getPRICE));
+				request.setAttribute("filtersort", "PriceLowtoHigh");
+				break;
+			case "PriceHightoLow":
+				Collections.sort(arrShoes, Comparator.comparingDouble(DETAIL_SHOES::getPRICE).reversed());
+				request.setAttribute("filtersort", "PriceHightoLow");
+				break;
+			case "Averagerating":
+				// Xử lý sắp xếp theo Averagerating ở đây (nếu cần)
+				request.setAttribute("filtersort", "Averagerating");
+				break;
+			case "Default":
+				// Mặc định không cần sắp xếp
+				request.setAttribute("filtersort", "Default");
+				break;
+			}
+		}
+
+		// Lọc danh sách giày dựa trên filterprice
+		if (filterprice != null) {
+			switch (filterprice) {
+			case "all":
+				request.setAttribute("filterprice", "all");
+				break;
+			case "0_100":
+				arrShoes = filterShoesByPrice(arrShoes, 0, 100);
+				request.setAttribute("filterprice", "0_100");
+				break;
+			case "100_200":
+				arrShoes = filterShoesByPrice(arrShoes, 100, 200);
+				request.setAttribute("filterprice", "100_200");
+				break;
+			case "200_300":
+				arrShoes = filterShoesByPrice(arrShoes, 200, 300);
+				request.setAttribute("filterprice", "200_300");
+				break;
+			case "300_0":
+				arrShoes = filterShoesByPrice(arrShoes, 300, 1000);
+				request.setAttribute("filterprice", "300_0");
+				break;
+			}
+		}
+
+		/*
+		 * // Lọc danh sách giày dựa trên filtercolor if (filtercolor != null &&
+		 * !filtercolor.equals("all")) { arrShoes = filterShoesByColor(arrShoes,
+		 * filtercolor); request.setAttribute("filtercolor", filtercolor); } else {
+		 * request.setAttribute("filtercolor", "all"); }
+		 */
+
+		request.setAttribute("listShoesCate", arrShoesCate);
+		request.setAttribute("listCategories", arrCategories);
+		request.setAttribute("listShoes", arrShoes);
+		request.setAttribute("activeMenu", "product");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/web/product.jsp");
+		rd.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+	public ArrayList<DETAIL_SHOES> filterShoesByPrice(ArrayList<DETAIL_SHOES> arrShoes, double minPrice,
+			double maxPrice) {
+		ArrayList<DETAIL_SHOES> arrShoesInRange = new ArrayList<>();
+
+		for (DETAIL_SHOES shoes : arrShoes) {
+			double price = shoes.getPRICE();
+			if (price >= minPrice && price <= maxPrice) {
+				arrShoesInRange.add(shoes);
+			}
+		}
+
+		return arrShoesInRange;
+	}
+
+}

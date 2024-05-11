@@ -1310,6 +1310,7 @@
         }).find('a, input, button, select').attr({
             'tabindex': '-1'
         });
+        
 
         if (_.$dots !== null) {
             _.$slides.not(_.$slideTrack.find('.slick-cloned')).each(function(i) {

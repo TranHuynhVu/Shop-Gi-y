@@ -1,3 +1,4 @@
+com\shopgiay\dao\imple\daoCategories.class
 com\shopgiay\model\SHOES.class
 com\shopgiay\dao\imple\daoColos.class
 com\shopgiay\dao\MySQLDataAccess.class
@@ -5,13 +6,18 @@ com\shopgiay\controller\web\api\NewApi.class
 com\shopgiay\util\FormUtil.class
 com\shopgiay\dao\imple\daoShoes.class
 com\shopgiay\controller\admin\HomeController.class
+com\shopgiay\controller\web\contactController.class
+com\shopgiay\controller\web\ShopingCartController.class
+com\shopgiay\controller\web\ProductController.class
 com\shopgiay\model\COLORS.class
 com\shopgiay\service\NewService.class
 com\shopgiay\util\JsonUtil.class
 com\shopgiay\util\SessionUtil.class
 com\shopgiay\dao\imple\daoDetail_Shoes.class
 com\shopgiay\controller\admin\api\NewApi.class
+com\shopgiay\model\IMAGES.class
 com\shopgiay\dao\Idao.class
+com\shopgiay\dao\imple\daoImages.class
 com\shopgiay\util\HttpUtil.class
 com\shopgiay\dao\imple\daoAccounts.class
 com\shopgiay\model\DETAIL_SHOES.class
@@ -19,6 +25,8 @@ com\shopgiay\controller\web\HomeController.class
 com\shopgiay\model\Model_Shoes.class
 com\shopgiay\dao\imple\daoSizes.class
 com\shopgiay\model\ACCOUNTS.class
+com\shopgiay\controller\web\AboutController.class
 com\shopgiay\filter\AuthorizationFilter.class
 com\shopgiay\model\UserModel.class
+com\shopgiay\model\CATEGORIES.class
 com\shopgiay\model\SIZES.class

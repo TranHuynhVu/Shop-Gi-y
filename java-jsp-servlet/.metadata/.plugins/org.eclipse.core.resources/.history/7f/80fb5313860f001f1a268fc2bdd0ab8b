@@ -1,0 +1,77 @@
+package com.shopgiay.controller.web;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ResourceBundle;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shopgiay.model.CATEGORIES;
+import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.SHOES;
+import com.shopgiay.service.NewService;
+import com.shopgiay.util.SessionUtil;
+
+@WebServlet(urlPatterns = { "/product" })
+public class ProductController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String filtersort = request.getParameter("filtersort");
+		ArrayList<DETAIL_SHOES> arrShoes = NewService.getNewService().getShoes();
+		ArrayList<SHOES> arrShoesCate = NewService.getNewService().getShoesSelectAll();
+		ArrayList<CATEGORIES> arrCategories = NewService.getNewService().getCategoriesSelectAll();
+
+		if (filtersort != null && filtersort.equals("PriceLowtoHigh")) {
+			System.out.println("PriceLowtoHigh");
+			// Sắp xếp danh sách theo giá tăng dần
+	        Collections.sort(arrShoes, new Comparator<DETAIL_SHOES>() {
+	            @Override
+	            public int compare(DETAIL_SHOES shoes1, DETAIL_SHOES shoes2) {
+
+	                return Double.compare(shoes1.getPRICE(), shoes2.getPRICE());
+	            }
+	        });
+
+			request.setAttribute("filtersort", "PriceLowtoHigh");
+		} else if (filtersort != null && filtersort.equals("Averagerating")) {
+			System.out.println("Averagerating");
+			request.setAttribute("filtersort", "Averagerating");
+		}else if (filtersort != null && filtersort.equals("PriceHightoLow")) {
+			System.out.println("PriceHightoLow");
+			Collections.sort(arrShoes, new Comparator<DETAIL_SHOES>() {
+			    @Override
+			    public int compare(DETAIL_SHOES shoes1, DETAIL_SHOES shoes2) {
+			        return Double.compare(shoes2.getPRICE(), shoes1.getPRICE());
+			    }
+			});
+
+			request.setAttribute("filtersort", "PriceHightoLow");
+		}else {
+			request.setAttribute("filtersort", "Default");
+					
+		}
+		request.setAttribute("listShoesCate", arrShoesCate);
+		request.setAttribute("listCategories", arrCategories);
+		request.setAttribute("listShoes", arrShoes);
+		request.setAttribute("activeMenu", "product");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/web/product.jsp");
+		rd.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

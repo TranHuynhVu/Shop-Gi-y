@@ -42,32 +42,17 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 	@Override
 	public ArrayList<DETAIL_SHOES> SelectAll() {
 		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
-		String sql = "SELECT \r\n"
-				+ "	   DS.ID AS Ma_Detail,\r\n"
-				+ "    DS.ID_SHOE AS Ma_giay,\r\n"
-				+ "    DS.PRICE AS Gia,\r\n"
-				+ "    DS.COUNTT AS So_luong,\r\n"
-				+ "    SH.NAMEE AS Ten_giay,\r\n"
-				+ "    SZ.SIZE AS Size,\r\n"
-				+ "    C.NAMEE AS Mau\r\n"
-				+ "FROM \r\n"
-				+ "    DETAIL_SHOES DS\r\n"
-				+ "JOIN \r\n"
-				+ "    DETAIL_COLORS DC ON DS.ID = DC.ID_DETAIL_SHOE\r\n"
-				+ "JOIN \r\n"
-				+ "    DETAIL_SIZES DZ ON DS.ID = DZ.ID_DETAIL_SHOE\r\n"
-				+ "JOIN \r\n"
-				+ "    COLORS C ON DC.ID_COLOR = C.ID\r\n"
-				+ "JOIN \r\n"
-				+ "    SIZES SZ ON DZ.ID_SIZE = SZ.ID\r\n"
-				+ "JOIN\r\n"
-				+ "    SHOES SH ON DS.ID_SHOE = SH.ID;\r\n"
-				+ "";
+		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail,SH.NAMEE AS Ten_shoes,DS.PRICE AS Gia, (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images FROM DETAIL_SHOES DS JOIN SHOES SH ON DS.ID_SHOE = SH.ID";
 		ResultSet rs = con.getResultSet(sql);
 		
 		try {
 			while (rs.next()) {
-				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES(rs.getString("Size"), rs.getString("Mau"), rs.getString("Ten_giay"), rs.getInt("Ma_Detail"), rs.getInt("Ma_giay"), rs.getDouble("Gia"), rs.getInt("So_luong"));
+				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+				detail_SHOES.setIMAGE(rs.getString("images"));
 				arr.add(detail_SHOES);
 			}
 		} catch (SQLException e) {
@@ -82,5 +67,25 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	public ArrayList<DETAIL_SHOES> SelectAllBySortPriceColor(String sqll) {
+		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
+		String sql = sqll;
+		ResultSet rs = con.getResultSet(sql);
+		
+		try {
+			while (rs.next()) {
+				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+				detail_SHOES.setIMAGE(rs.getString("images"));
+				arr.add(detail_SHOES);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return arr;
+	}
 }

@@ -23,9 +23,11 @@ import com.shopgiay.dao.imple.daoSizes;
 import com.shopgiay.model.ACCOUNTS;
 import com.shopgiay.model.COLORS;
 import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.IMAGES;
 import com.shopgiay.model.SHOES;
 import com.shopgiay.model.SIZES;
 import com.shopgiay.model.UserModel;
+import com.shopgiay.service.NewService;
 import com.shopgiay.util.HttpUtil;
 import com.shopgiay.util.JsonUtil;
 import com.shopgiay.util.SessionUtil;
@@ -59,25 +61,45 @@ public class NewApi extends HttpServlet {
 			if (action.equals("ClickGioHang")) {
 				System.out.println("ClickGioHang");
 			}
+			if(action.equals("ClickTym")) {
+				System.out.println("ClickTym");
+				
+//				int id = object.getInt("ID");
+//				int idShoe = object.getInt("ID_SHOE");
+//				String name = object.getString("NAME");
+//				double price = object.getDouble("PRICE");
+//				
+//				DETAIL_SHOES df = new DETAIL_SHOES(null, null, name, id, idShoe, price, 0);
+//				obMap.put("shoe", df);
+			}
 			if (action.equals("ClickQuickView")) {
 				System.out.println("ClickQuickView");
 				
 				int id = object.getInt("ID");
-				int idShoe = object.getInt("ID_SHOE");
+				int idshoes = object.getInt("ID_SHOES");
 				String name = object.getString("NAME");
 				double price = object.getDouble("PRICE");
 				
-				DETAIL_SHOES df = new DETAIL_SHOES(null, null, name, id, idShoe, price, 0);
+				DETAIL_SHOES df = new DETAIL_SHOES();
+				df.setID(id);
+				df.setID_SHOE(idshoes);
+				df.setNAME(name);
+				df.setPRICE(price);
 				// màu
-				ArrayList<COLORS> colorsarr = daoColos.getDaoColos().selectByIDColor(df.getID());
+				ArrayList<COLORS> colorsarr = NewService.getNewService().getColorsByID(df.getID());
 				// sizea
-				ArrayList<SIZES> sizesarr = daoSizes.getDaoSizes().SelectByID(df.getID());
-
+				ArrayList<SIZES> sizesarr = NewService.getNewService().getSizesByID(df.getID());
+				
+				ArrayList<IMAGES> imageArr = NewService.getNewService().getImagesByID(df.getID());
+				
+				for (IMAGES images : imageArr) {
+					System.out.println(images.toString());
+				}
 				obMap.put("colors", colorsarr);
 				obMap.put("size", sizesarr);
-				obMap.put("nameShoe", df.getNAME());
-				obMap.put("price", df.getPRICE());
-
+				obMap.put("images", imageArr);
+				obMap.put("detall_shoes", df);
+				
 			}
 			mapper.writeValue(response.getOutputStream(), obMap);
 		}
