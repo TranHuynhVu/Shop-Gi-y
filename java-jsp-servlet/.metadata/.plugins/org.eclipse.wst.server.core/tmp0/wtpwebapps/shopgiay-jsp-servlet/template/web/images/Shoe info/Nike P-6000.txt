@@ -1,9 +1,0 @@
-- Nike P-6000
-- Shoes
-- Color
-+ Grey black white
-+ Red black white
-+ Blue black white
-+ White black white
-- Size
-40 - 40.5 - 41 - 42 - 42.5 - 43 - 44 - 44.5 - 45 - 45.5 - 46 - 47 - 47.5

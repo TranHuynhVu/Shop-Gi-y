@@ -1,0 +1,11 @@
+package com.shopgiay.model;
+
+public class CARTS {
+	private int IDCARTS;
+	private int ACCOUNTID;
+	private int DETAILSHOEID;
+	private int QUANTITY;
+	private int SIZECARTS;
+	private String COLORCARTS;
+	
+}

@@ -2,12 +2,14 @@ package com.shopgiay.service;
 
 import java.util.ArrayList;
 
+import com.shopgiay.dao.imple.daoCarts;
 import com.shopgiay.dao.imple.daoCategories;
 import com.shopgiay.dao.imple.daoColos;
 import com.shopgiay.dao.imple.daoDetail_Shoes;
 import com.shopgiay.dao.imple.daoImages;
 import com.shopgiay.dao.imple.daoShoes;
 import com.shopgiay.dao.imple.daoSizes;
+import com.shopgiay.model.CARTS;
 import com.shopgiay.model.CATEGORIES;
 import com.shopgiay.model.COLORS;
 import com.shopgiay.model.DETAIL_SHOES;
@@ -46,5 +48,14 @@ public class NewService {
 	}
 	public ArrayList<DETAIL_SHOES> SelctByIdNameDF(String name){
 		return daoDetail_Shoes.getdaoDetail_Shoes().SelectAllByName(name);
+	}
+	
+	public void InsertCart(CARTS carts) {
+		daoCarts.getDaocarts().Insert(carts);
+		
+	}
+	
+	public DETAIL_SHOES selectByIdDetail_SHOES(int id) {
+		return daoDetail_Shoes.getdaoDetail_Shoes().SelectAllByID(id);
 	}
 }

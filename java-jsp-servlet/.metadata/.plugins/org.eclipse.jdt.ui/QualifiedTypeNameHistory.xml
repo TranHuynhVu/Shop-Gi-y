@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.shopgiay.model.UserModel"/>
-    <fullyQualifiedTypeName name="T"/>
     <fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
     <fullyQualifiedTypeName name="java.lang.IllegalAccessException"/>
     <fullyQualifiedTypeName name="java.lang.reflect.InvocationTargetException"/>
@@ -40,15 +38,11 @@
     <fullyQualifiedTypeName name="com.shopgiay.model.ACCOUNTS"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.ACTION"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.util.JSONPObject"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="org.json.JSONObject"/>
-    <fullyQualifiedTypeName name="com.shopgiay.util.JsonUtil"/>
-    <fullyQualifiedTypeName name="com.shopgiay.controller.web.api.NewApi"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.DETAIL_SHOES"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
-    <fullyQualifiedTypeName name="com.shopgiay.service.NewService"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.SIZES"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.IMAGES"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoImages"/>
@@ -58,6 +52,12 @@
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoShoes"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.SHOES"/>
+    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCarts"/>
+    <fullyQualifiedTypeName name="com.shopgiay.controller.web.api.NewApi"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.CARTS"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.shopgiay.service.NewService"/>
+    <fullyQualifiedTypeName name="com.shopgiay.util.JsonUtil"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

@@ -185,7 +185,7 @@
 				</div>
 
 				<div class="col-md-6 col-lg-5 p-b-30">
-					<div class="p-r-50 p-t-5 p-lr-0-lg">
+					<div class="p-r-50 p-t-5 p-lr-0-lg click-js-addcart-detail">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14" id="nameShoe">Lightweight
 							Jacket</h4>
 
@@ -196,7 +196,7 @@
 							ornare feugiat.</p>
 
 						<!--  -->
-						<form>
+		
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">Size</div>
@@ -235,7 +235,7 @@
 										</div>
 
 										<input class="mtext-104 cl3 txt-center num-product"
-											type="number" name="num-product" value="1">
+											type="number" name="num-product" id="num-product" value="1">
 
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
@@ -250,7 +250,7 @@
 								</div>
 							</div>
 						</div>
-						</form>
+
 
 						<!--  -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">

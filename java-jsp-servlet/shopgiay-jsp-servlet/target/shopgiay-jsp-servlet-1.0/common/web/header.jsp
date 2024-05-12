@@ -44,7 +44,7 @@
 							<a href='<c:url value="/trang-chu"/>'>Home</a>
 						</li>
 						<li class="<c:if test="${activeMenu == 'product'}"><c:out value = "active-menu"/></c:if>">
-							<a href='<c:url value="/product?filtersort=Default"/>'>Shop</a>
+							<a href='<c:url value="/product?filtersort=Default&filterprice=all"/>'>Shop</a>
 						</li>
 								
 						<li class="<c:if test="${activeMenu == 'shopingcart'}"><c:out value = "active-menu"/></c:if>">

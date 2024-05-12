@@ -21,6 +21,7 @@ import com.shopgiay.dao.imple.daoColos;
 import com.shopgiay.dao.imple.daoShoes;
 import com.shopgiay.dao.imple.daoSizes;
 import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.CARTS;
 import com.shopgiay.model.COLORS;
 import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.IMAGES;
@@ -101,6 +102,23 @@ public class NewApi extends HttpServlet {
 				obMap.put("detall_shoes", df);
 				
 			}
+			if(action.equals("AddCart")) {
+				String ID = object.getString("ID");
+				String COLOR = object.getString("COLOR");
+				String QUANTITY = object.getString("QUANTITY");
+				String SIZES = object.getString("SIZES");
+				
+				CARTS carts = new CARTS();
+				carts.setDETAILSHOEID(Integer.parseInt(ID));
+				carts.setACCOUNTID(acc.getID());
+				carts.setQUANTITY(Integer.parseInt(QUANTITY));
+				carts.setCOLORCARTS(COLOR);
+				carts.setSIZECARTS(SIZES);
+				
+				System.out.println(carts);
+				NewService.getNewService().InsertCart(carts);	
+			}
+
 			mapper.writeValue(response.getOutputStream(), obMap);
 		}
 

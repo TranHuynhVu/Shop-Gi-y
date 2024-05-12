@@ -62,11 +62,7 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 		return arr;
 	}
 
-	@Override
-	public DETAIL_SHOES SelectByID(DETAIL_SHOES t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	public ArrayList<DETAIL_SHOES> SelectAllBySortPriceColor(String sqll) {
 		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
 		String sql = sqll;
@@ -111,5 +107,31 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 		}
 		con.CloseConetion();
 		return arr;
+	}
+	public DETAIL_SHOES SelectAllByID(int id) {
+		DETAIL_SHOES  detail_SHOES= null;
+		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail, SH.NAMEE AS Ten_shoes, DS.PRICE AS Gia\r\n"
+				+ "FROM DETAIL_SHOES DS\r\n"
+				+ "JOIN SHOES SH ON DS.ID_SHOE = SH.ID\r\n"
+				+ "WHERE DS.ID = ?";
+		ResultSet rs = con.getResultSet(sql,id);
+		try {
+			while (rs.next()) {
+				detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return detail_SHOES;
+	}
+	@Override
+	public DETAIL_SHOES SelectByID(DETAIL_SHOES t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

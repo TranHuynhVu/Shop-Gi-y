@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="listShoesCate"/>
+		<item key="selection" value="js-addcart-detail"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="js-addcart-detail"/>
+			<item value="js-hide-modal1"/>
+			<item value="js-modal1"/>
+			<item value="&#x09;&#x09;"/>
+			<item value="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04"/>
+			<item value="300_0"/>
+			<item value="listCategories"/>
 			<item value="listShoesCate"/>
 			<item value="slick3"/>
 			<item value="imagesShoes"/>
@@ -16,13 +23,6 @@
 			<item value="e.$slides.add(e.$slideTrack.find(&quot;.slick-cloned&quot;)).attr"/>
 			<item value="if (e &amp;&amp; e.$slides &amp;&amp; e.$slideTrack) {"/>
 			<item value="slick-cloned"/>
-			<item value="e.$slides.add(e.$slideTrack.find(&quot;.slick-cloned&quot;)).attr({&#x0A;&quot;aria-hidden&quot;: &quot;true&quot;,&#x0A;tabindex: &quot;-1&quot;&#x0A;}).find(&quot;a, input, button, select&quot;).attr({&#x0A;tabindex: &quot;-1&quot;&#x0A;}),"/>
-			<item value="e.$slides.add(e.$slideTrack.find(&quot;.slick-cloned&quot;)).attr({&#x0A;            &quot;aria-hidden&quot;: &quot;true&quot;,&#x0A;            tabindex: &quot;-1&quot;&#x0A;        }).find(&quot;a, input, button, select&quot;).attr({&#x0A;            tabindex: &quot;-1&quot;&#x0A;        }),"/>
-			<item value="imageIMG"/>
-			<item value="imageIMG1"/>
-			<item value=".wrap-pic-w img"/>
-			<item value="col-md-6 col-xl-4 p-b-30 m-lr-auto"/>
-			<item value="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm"/>
 		</list>
 		<list key="replacehistory">
 		</list>
