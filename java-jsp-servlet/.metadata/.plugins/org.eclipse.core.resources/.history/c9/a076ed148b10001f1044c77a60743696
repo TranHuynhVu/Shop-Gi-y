@@ -1,0 +1,6 @@
+package com.shopgiay.model.imple;
+
+public abstract class ModelCarts {
+	String image_url;
+	
+}

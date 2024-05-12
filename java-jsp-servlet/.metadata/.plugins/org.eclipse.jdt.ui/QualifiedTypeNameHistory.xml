@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
-    <fullyQualifiedTypeName name="java.lang.IllegalAccessException"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.InvocationTargetException"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.MySQLDataAccess"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.USERMANAGERS"/>
@@ -25,15 +22,12 @@
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoColos"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoSizes"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="com.shopgiay.util.SessionUtil"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
     <fullyQualifiedTypeName name="com.shopgiay.util.HttpUtil"/>
-    <fullyQualifiedTypeName name="com.shopgiay.model.ACCOUNTS"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.ACTION"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.util.JSONPObject"/>
     <fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
@@ -42,22 +36,28 @@
     <fullyQualifiedTypeName name="java.awt.Image"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.IMAGES"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoImages"/>
-    <fullyQualifiedTypeName name="com.shopgiay.dao.Idao"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCategories"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.CATEGORIES"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoShoes"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.SHOES"/>
-    <fullyQualifiedTypeName name="com.shopgiay.controller.web.api.NewApi"/>
-    <fullyQualifiedTypeName name="com.shopgiay.model.CARTS"/>
     <fullyQualifiedTypeName name="com.shopgiay.util.JsonUtil"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCarts"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoDetail_Shoes"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.DETAIL_SHOES"/>
-    <fullyQualifiedTypeName name="com.shopgiay.service.NewService"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.SIZES"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.COLORS"/>
+    <fullyQualifiedTypeName name="com.shopgiay.dao.Idao"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.CommentsReviews"/>
+    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCommentReviews"/>
+    <fullyQualifiedTypeName name="com.shopgiay.controller.web.api.NewApi"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.imple.ModelCarts"/>
+    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCarts"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.CARTS"/>
+    <fullyQualifiedTypeName name="com.shopgiay.service.NewService"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.ACCOUNTS"/>
+    <fullyQualifiedTypeName name="com.shopgiay.util.SessionUtil"/>
 </qualifiedTypeNameHistroy>

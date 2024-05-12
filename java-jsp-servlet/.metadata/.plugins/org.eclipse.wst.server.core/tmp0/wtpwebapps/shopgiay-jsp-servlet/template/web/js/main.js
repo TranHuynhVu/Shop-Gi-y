@@ -200,18 +200,18 @@
 		var data = {
 			"ACTION": "ClickGioHang"
 		};
-		console.log(data)
 		$.ajax({
-			type: "POST", // hoặc "GET" tùy thuộc vào cách bạn cấu hình máy chủ
-			url: "/shopbangiay-jsp-servlet/api-web-new", // Thay đổi "your-server-url" thành URL của máy chủ của bạn
+			type: "POST", 
+			url: "/shopbangiay-jsp-servlet/api-web-new",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			dataType: "json",
 			success: function(response) {
 				console.log(response)
-				console.log(data)
 				if (response.ACC != null) {
-
+					$('.header-cart-wrapitem').find('.header-cart-item').remove();
+					$('.header-cart-wrapitem').append(response.html);
+					$('.header-cart-total').text("Total: $"+response.price);
 					$('.js-panel-cart').addClass('show-header-cart');
 				} else {
 					alert("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
@@ -511,8 +511,14 @@
 			success: function(response) {
 				console.log(response)
 				if (response.ACC != null) {
-					swal("Comment!", "success");
-					$('#review').val("");
+					if(response.commentrate == "commentrate"){
+						alert("Vui lòng nhập comment or chọn sao.");
+					}else{
+						swal("", "is added to wishlist !", "success");
+						$('#review').val("");
+					}
+					
+					
 				} else {
 					alert("Vui lòng đăng nhập để comment.");
 				}

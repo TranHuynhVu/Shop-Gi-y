@@ -1,6 +1,8 @@
 package com.shopgiay.model;
 
-public class CARTS {
+import com.shopgiay.model.imple.ModelCarts;
+
+public class CARTS extends ModelCarts {
 	private int IDCARTS;
 	private int ACCOUNTID;
 	private int DETAILSHOEID;

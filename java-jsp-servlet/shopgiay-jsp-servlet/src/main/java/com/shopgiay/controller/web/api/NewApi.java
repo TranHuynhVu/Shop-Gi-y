@@ -92,17 +92,32 @@ public class NewApi extends HttpServlet {
 			
 			if (action.equals("ClickGioHang")) {
 				System.out.println("ClickGioHang");
+				ArrayList<CARTS> cartsArr= NewService.getNewService().selectAllByIDCarts(acc.getID());
+				String html ="";
+				double price = 0;
+				for (CARTS carts : cartsArr) {
+					System.out.println(carts);
+					html += "<li class=\"header-cart-item flex-w flex-t m-b-12\">\n" +
+						    "    <div class=\"header-cart-item-img\">\n" +
+						    "        <img src=\"/shopbangiay-jsp-servlet/" + carts.getImage_url() + " \" alt=\"IMG\">\n" +
+						    "    </div>\n" +
+						    "\n" +
+						    "    <div class=\"header-cart-item-txt p-t-8\">\n" +
+						    "        <a href=\"/shopbangiay-jsp-servlet/product-detail?ID=" + carts.getDETAILSHOEID() + "\" class=\"header-cart-item-name m-b-18 hov-cl1 trans-04\">" + carts.getShoe_name() + "</a>\n" +
+						    "        <span class=\"header-cart-item-info\">" + carts.getQUANTITY() + " x $" + carts.getPrice() + "</span>\n" +
+						    "    </div>\n" +
+						    "</li>";
+					
+					price += carts.getPrice() * carts.getQUANTITY();
+				}
+	
+				obMap.put("html", html);
+				obMap.put("price", price);
+
 			}
 			if(action.equals("ClickTym")) {
 				System.out.println("ClickTym");
-				
-//				int id = object.getInt("ID");
-//				int idShoe = object.getInt("ID_SHOE");
-//				String name = object.getString("NAME");
-//				double price = object.getDouble("PRICE");
-//				
-//				DETAIL_SHOES df = new DETAIL_SHOES(null, null, name, id, idShoe, price, 0);
-//				obMap.put("shoe", df);
+			
 			}
 			
 			if(action.equals("AddCart")) {
@@ -127,15 +142,22 @@ public class NewApi extends HttpServlet {
 				String COMMENT = object.getString("COMMENT");
 				int RATE = object.getInt("RATE");
 				
-				CommentsReviews commentsReviews = new CommentsReviews();
-				commentsReviews.setIDACC(IDACC);
-				commentsReviews.setIDDFSHOE(IDDF);
-				commentsReviews.setDETAILCR(COMMENT);
-				commentsReviews.setRATE(RATE);
+				if(COMMENT.isEmpty() || RATE == 0) {
+					System.out.println("aa");
+					obMap.put("commentrate", "commentrate");
+				}else {
+					CommentsReviews commentsReviews = new CommentsReviews();
+					commentsReviews.setIDACC(IDACC);
+					commentsReviews.setIDDFSHOE(IDDF);
+					commentsReviews.setDETAILCR(COMMENT);
+					commentsReviews.setRATE(RATE);
+
+					System.out.println(commentsReviews);
+					NewService.getNewService().InsertComment(commentsReviews);
+				}
+				
 
 				
-				System.out.println(commentsReviews);
-				NewService.getNewService().InsertComment(commentsReviews);
 	
 			}
 			

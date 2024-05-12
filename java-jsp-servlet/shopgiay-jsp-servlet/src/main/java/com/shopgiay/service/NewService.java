@@ -67,4 +67,7 @@ public class NewService {
 		daoCommentReviews.getCommentReviews().Insert(commentsReviews);
 		
 	}
+	public ArrayList<CARTS> selectAllByIDCarts(int id){
+		return daoCarts.getDaocarts().SelectAllByID(id);
+	}
 }

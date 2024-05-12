@@ -1,6 +1,7 @@
 package com.shopgiay.controller.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.CARTS;
+import com.shopgiay.service.NewService;
+import com.shopgiay.util.SessionUtil;
 
 /**
  * Servlet implementation class ShopingCartController
@@ -17,7 +23,13 @@ public class ShopingCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("activeMenu", "shopingcart");
+		/* request.setAttribute("activeMenu", "shopingcart"); */
+		
+		ACCOUNTS acc = (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
+		
+		ArrayList<CARTS> cartsArr= NewService.getNewService().selectAllByIDCarts(acc.getID());
+		
+		request.setAttribute("Carts", cartsArr);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/shopingCart.jsp");
         rd.forward(request, response);

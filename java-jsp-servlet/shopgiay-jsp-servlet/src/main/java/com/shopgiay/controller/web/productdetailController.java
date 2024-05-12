@@ -53,6 +53,7 @@ public class productdetailController extends HttpServlet {
 		request.setAttribute("detall_shoes", df); 
 		request.setAttribute("comments", commentsReviewsArr); 
 		request.setAttribute("iddf", id);
+	
 		if(acc != null) {
 			request.setAttribute("idacc", acc.getID());
 		}
