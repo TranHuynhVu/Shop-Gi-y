@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.shopgiay.dao.imple.daoCarts;
 import com.shopgiay.dao.imple.daoCategories;
 import com.shopgiay.dao.imple.daoColos;
+import com.shopgiay.dao.imple.daoCommentReviews;
 import com.shopgiay.dao.imple.daoDetail_Shoes;
 import com.shopgiay.dao.imple.daoImages;
 import com.shopgiay.dao.imple.daoShoes;
@@ -12,6 +13,7 @@ import com.shopgiay.dao.imple.daoSizes;
 import com.shopgiay.model.CARTS;
 import com.shopgiay.model.CATEGORIES;
 import com.shopgiay.model.COLORS;
+import com.shopgiay.model.CommentsReviews;
 import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.IMAGES;
 import com.shopgiay.model.SHOES;
@@ -54,8 +56,15 @@ public class NewService {
 		daoCarts.getDaocarts().Insert(carts);
 		
 	}
-	
 	public DETAIL_SHOES selectByIdDetail_SHOES(int id) {
 		return daoDetail_Shoes.getdaoDetail_Shoes().SelectAllByID(id);
+	}
+	
+	public ArrayList<CommentsReviews> SelectAllByIDComment(int id){
+		return daoCommentReviews.getCommentReviews().SelectAllByID(id);
+	}
+	public void InsertComment(CommentsReviews commentsReviews) {
+		daoCommentReviews.getCommentReviews().Insert(commentsReviews);
+		
 	}
 }

@@ -17,7 +17,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="java.lang.Short"/>
-    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoDetail_Shoes"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnoreProperties"/>
@@ -26,7 +25,6 @@
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoColos"/>
-    <fullyQualifiedTypeName name="com.shopgiay.model.COLORS"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoSizes"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
@@ -41,9 +39,7 @@
     <fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="org.json.JSONObject"/>
-    <fullyQualifiedTypeName name="com.shopgiay.model.DETAIL_SHOES"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
-    <fullyQualifiedTypeName name="com.shopgiay.model.SIZES"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.IMAGES"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoImages"/>
     <fullyQualifiedTypeName name="com.shopgiay.dao.Idao"/>
@@ -53,11 +49,15 @@
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.SHOES"/>
-    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCarts"/>
     <fullyQualifiedTypeName name="com.shopgiay.controller.web.api.NewApi"/>
     <fullyQualifiedTypeName name="com.shopgiay.model.CARTS"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="com.shopgiay.service.NewService"/>
     <fullyQualifiedTypeName name="com.shopgiay.util.JsonUtil"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoCarts"/>
+    <fullyQualifiedTypeName name="com.shopgiay.dao.imple.daoDetail_Shoes"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.DETAIL_SHOES"/>
+    <fullyQualifiedTypeName name="com.shopgiay.service.NewService"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.SIZES"/>
+    <fullyQualifiedTypeName name="com.shopgiay.model.COLORS"/>
 </qualifiedTypeNameHistroy>

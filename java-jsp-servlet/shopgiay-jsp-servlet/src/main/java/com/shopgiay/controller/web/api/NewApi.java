@@ -23,6 +23,7 @@ import com.shopgiay.dao.imple.daoSizes;
 import com.shopgiay.model.ACCOUNTS;
 import com.shopgiay.model.CARTS;
 import com.shopgiay.model.COLORS;
+import com.shopgiay.model.CommentsReviews;
 import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.IMAGES;
 import com.shopgiay.model.SHOES;
@@ -53,12 +54,42 @@ public class NewApi extends HttpServlet {
 
 		Map<String, Object> obMap = new HashMap<String, Object>();
 		obMap.put("ACC", acc);
-
+		
+		JSONObject object = JsonUtil.of(request.getReader()).getObject();
+		String action = object.getString("ACTION");
+		
+		if (action.equals("ClickQuickView")) {
+			System.out.println("ClickQuickView");
+			int id = object.getInt("ID");
+			int idshoes = object.getInt("ID_SHOES");
+			String name = object.getString("NAME");
+			double price = object.getDouble("PRICE");
+			
+			DETAIL_SHOES df = new DETAIL_SHOES();
+			df.setID(id);
+			df.setID_SHOE(idshoes);
+			df.setNAME(name);
+			df.setPRICE(price);
+			// màu
+			ArrayList<COLORS> colorsarr = NewService.getNewService().getColorsByID(df.getID());
+			// sizea
+			ArrayList<SIZES> sizesarr = NewService.getNewService().getSizesByID(df.getID());
+			
+			ArrayList<IMAGES> imageArr = NewService.getNewService().getImagesByID(df.getID());
+			
+			for (IMAGES images : imageArr) {
+				System.out.println(images.toString());
+			}
+			obMap.put("colors", colorsarr);
+			obMap.put("size", sizesarr);
+			obMap.put("images", imageArr);
+			obMap.put("detall_shoes", df);		
+		}
+		
 		if (acc == null) {
 			mapper.writeValue(response.getOutputStream(), obMap);
 		} else {
-			JSONObject object = JsonUtil.of(request.getReader()).getObject();
-			String action = object.getString("ACTION");
+			
 			if (action.equals("ClickGioHang")) {
 				System.out.println("ClickGioHang");
 			}
@@ -73,35 +104,7 @@ public class NewApi extends HttpServlet {
 //				DETAIL_SHOES df = new DETAIL_SHOES(null, null, name, id, idShoe, price, 0);
 //				obMap.put("shoe", df);
 			}
-			if (action.equals("ClickQuickView")) {
-				System.out.println("ClickQuickView");
-				
-				int id = object.getInt("ID");
-				int idshoes = object.getInt("ID_SHOES");
-				String name = object.getString("NAME");
-				double price = object.getDouble("PRICE");
-				
-				DETAIL_SHOES df = new DETAIL_SHOES();
-				df.setID(id);
-				df.setID_SHOE(idshoes);
-				df.setNAME(name);
-				df.setPRICE(price);
-				// màu
-				ArrayList<COLORS> colorsarr = NewService.getNewService().getColorsByID(df.getID());
-				// sizea
-				ArrayList<SIZES> sizesarr = NewService.getNewService().getSizesByID(df.getID());
-				
-				ArrayList<IMAGES> imageArr = NewService.getNewService().getImagesByID(df.getID());
-				
-				for (IMAGES images : imageArr) {
-					System.out.println(images.toString());
-				}
-				obMap.put("colors", colorsarr);
-				obMap.put("size", sizesarr);
-				obMap.put("images", imageArr);
-				obMap.put("detall_shoes", df);
-				
-			}
+			
 			if(action.equals("AddCart")) {
 				String ID = object.getString("ID");
 				String COLOR = object.getString("COLOR");
@@ -118,7 +121,24 @@ public class NewApi extends HttpServlet {
 				System.out.println(carts);
 				NewService.getNewService().InsertCart(carts);	
 			}
+			if(action.equals("COMMENT")) {
+				int IDACC = object.getInt("IDACC");
+				int IDDF = object.getInt("IDDF");
+				String COMMENT = object.getString("COMMENT");
+				int RATE = object.getInt("RATE");
+				
+				CommentsReviews commentsReviews = new CommentsReviews();
+				commentsReviews.setIDACC(IDACC);
+				commentsReviews.setIDDFSHOE(IDDF);
+				commentsReviews.setDETAILCR(COMMENT);
+				commentsReviews.setRATE(RATE);
 
+				
+				System.out.println(commentsReviews);
+				NewService.getNewService().InsertComment(commentsReviews);
+	
+			}
+			
 			mapper.writeValue(response.getOutputStream(), obMap);
 		}
 

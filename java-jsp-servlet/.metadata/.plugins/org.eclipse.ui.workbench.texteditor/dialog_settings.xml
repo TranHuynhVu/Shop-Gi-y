@@ -9,6 +9,8 @@
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
 			<item value="js-addcart-detail"/>
+			<item value="slick3"/>
+			<item value="imageDataThumb"/>
 			<item value="js-hide-modal1"/>
 			<item value="js-modal1"/>
 			<item value="&#x09;&#x09;"/>
@@ -16,9 +18,7 @@
 			<item value="300_0"/>
 			<item value="listCategories"/>
 			<item value="listShoesCate"/>
-			<item value="slick3"/>
 			<item value="imagesShoes"/>
-			<item value="imageDataThumb"/>
 			<item value="slides"/>
 			<item value="e.$slides.add(e.$slideTrack.find(&quot;.slick-cloned&quot;)).attr"/>
 			<item value="if (e &amp;&amp; e.$slides &amp;&amp; e.$slideTrack) {"/>

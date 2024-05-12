@@ -166,7 +166,6 @@
 			});
 		});
 		function initSlickSlider() {
-			console.log("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
 		    $('.wrap-slick3').each(function() {
 		        $(this).find('.slick3').slick({
 		            slidesToShow: 1,
@@ -192,7 +191,41 @@
 		    });
 		}
 
- 
+		$('.js-addcart-detail').each(function() {
+			var nameProduct = $(this).closest('.click-js-addcart-detail').find('.js-name-detail').text().trim();
+			$(this).on('click', function() {
+				var data = {
+					"ID": $('#iddf').val(),
+					"QUANTITY": $('#num-product').val(),
+					"COLOR": $('#color').val(),
+					"SIZES": $('#sizes').val(),
+					"ACTION": "AddCart"
+				};
+				$.ajax({
+					type: "POST",
+					url: "/shopbangiay-jsp-servlet/api-web-new",
+					data: JSON.stringify(data),
+					contentType: "application/json",
+					dataType: "json",
+					success: function(response) {
+						console.log(response + "AddCart");
+						if (response.ACC != null) {
+							swal(nameProduct, "is added to cart !", "success");
+						}else{
+							alert("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
+							console.log("Vui lòng đăng nhập để xem chi tiết sản phẩm.")
+						}
+						
+						
+					},
+					error: function(xhr, status, error) {
+						console.error("Error sending data:", error);
+					}
+				});
+
+
+			});
+		});
 		/*---------------------------------------------*/
 
 /* 		$('.js-addcart-detail').each(function(){

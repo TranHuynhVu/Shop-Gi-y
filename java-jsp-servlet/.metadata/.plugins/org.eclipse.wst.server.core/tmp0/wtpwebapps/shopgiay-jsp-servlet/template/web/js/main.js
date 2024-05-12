@@ -317,71 +317,38 @@
 			dataType: "json",
 			success: function(response) {
 				console.log(response + "ClickQuickView");
-				if (response.ACC != null) {
 
-					var colors = response.colors;
-					var size = response.size;
-					var images = response.images;
-					var df = response.detall_shoes;
+				var colors = response.colors;
+				var size = response.size;
+				var images = response.images;
+				var df = response.detall_shoes;
 
-					var i = 1;
-					images.forEach(function(image) {
-						$('#imageDataThumb' + i).attr('data-thumb', "/shopbangiay-jsp-servlet/" + image.id);
-						$('#imageIMG' + i).attr('src', "/shopbangiay-jsp-servlet/" + image.id);
-						$('#imageA' + i).attr('href', "/shopbangiay-jsp-servlet/" + image.id);
-						i++;
-					});
+				var i = 1;
+				images.forEach(function(image) {
+					$('#imageDataThumb' + i).attr('data-thumb', "/shopbangiay-jsp-servlet/" + image.id);
+					$('#imageIMG' + i).attr('src', "/shopbangiay-jsp-servlet/" + image.id);
+					$('#imageA' + i).attr('href', "/shopbangiay-jsp-servlet/" + image.id);
+					i++;
+				});
 
-					colors.forEach(function(color) {// cập nhật colors
-						var option = $('<option>', { text: color.namee });
-						$('#color').append(option);
+				colors.forEach(function(color) {// cập nhật colors
+					var option = $('<option>', { text: color.namee });
+					$('#color').append(option);
 
-					});
-					size.forEach(function(size) {// cập nhật size
-						var option = $('<option>', { text: size.size });
-						$('#sizes').append(option);
-					});
-					$('#nameShoe').text(df.name);// cập nhật tên
-					$('#PRICE').text('$' + df.price); // Cập nhật giá
-					$('#id_Shoe').val(df.id_SHOE);
-					$('#iddf').val(df.id);
-					
-					initSlickSlider();
-					
-					$('.js-modal1').addClass('show-modal1');
-					$('.js-addcart-detail').each(function() {
-						var nameProduct = $(this).closest('.click-js-addcart-detail').find('.js-name-detail').text().trim();
-						$(this).on('click', function() {
-							var data = {
-								"ID": $('#iddf').val(),
-								"QUANTITY": $('#num-product').val(),
-								"COLOR": $('#color').val(),
-								"SIZES": $('#sizes').val(),
-								"ACTION": "AddCart"
-							};
-							$.ajax({
-								type: "POST",
-								url: "/shopbangiay-jsp-servlet/api-web-new",
-								data: JSON.stringify(data),
-								contentType: "application/json",
-								dataType: "json",
-								success: function(response) {
-									console.log(response + "AddCart");
-									swal(nameProduct, "is added to cart !", "success");
-								},
-								error: function(xhr, status, error) {
-									console.error("Error sending data:", error);
-								}
-							});
+				});
+				size.forEach(function(size) {// cập nhật size
+					var option = $('<option>', { text: size.size });
+					$('#sizes').append(option);
+				});
+				$('#nameShoe').text(df.name);// cập nhật tên
+				$('#PRICE').text('$' + df.price); // Cập nhật giá
+				$('#id_Shoe').val(df.id_SHOE);
+				$('#iddf').val(df.id);
 
+				initSlickSlider();
 
-						});
-					});
+				$('.js-modal1').addClass('show-modal1');
 
-				} else {
-					alert("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
-					console.log("Vui lòng đăng nhập để xem chi tiết sản phẩm.")
-				}
 			},
 			error: function(xhr, status, error) {
 				console.error("Error sending data:", error);
@@ -390,31 +357,7 @@
 	});
 
 	////////////////////////////////////////
-	/*
-		function sendDataToServer() {
-			var dataToSend = {};
-			$("a.filter-link-active").each(function(index) {
-				var filterText = $(this).text().trim();
-				var key = 'filter' + index;
-				dataToSend[key] = filterText;
-			});
-			console.log(dataToSend);
-			$.ajax({
-				type: "POST",
-				url: "/shopbangiay-jsp-servlet/api-web-product",
-				data: JSON.stringify(dataToSend),
-				contentType: "application/json",
-				dataType: "json",
-				success: function(response) {
-					console.log(response);
-	
-				},
-				error: function(xhr, status, error) {
-					console.error("Error sending data:", error);
-				}
-			});
-		}
-		*/
+
 
 	// Xử lý sự kiện click cho các liên kết có class 'FilterSort'
 	$('a.FilterSort').click(function(event) {
@@ -455,111 +398,138 @@
 
 	//////////////////////////////////
 
-/*
-	$('a#clickproductdetail').on('click', function(event) {
-		event.preventDefault();
-		var id = $(this).data('id');
-		var nameShoe = $(this).data('nameshoes');
-		var price = $(this).data('price');
-		var idshoes = $(this).data('idshoes')
-
-		// Tạo một đối tượng JSON chứa các giá trị của các biến
+	/*
+		$('a#clickproductdetail').on('click', function(event) {
+			event.preventDefault();
+			var id = $(this).data('id');
+			var nameShoe = $(this).data('nameshoes');
+			var price = $(this).data('price');
+			var idshoes = $(this).data('idshoes')
+	
+			// Tạo một đối tượng JSON chứa các giá trị của các biến
+			var data = {
+				"ID": id,
+				"NAME": nameShoe,
+				"PRICE": price,
+				"ID_SHOES": idshoes,
+				"ACTION": "productdetail"
+			};
+	
+			$.ajax({
+				type: "POST",
+				url: "/shopbangiay-jsp-servlet/api-web-productdetail",
+				data: JSON.stringify(data),
+				contentType: "application/json",
+				dataType: "json",
+				success: function(response) {
+					console.log(response + "productdetail");
+	
+					// Di chuyển chuyển hướng trang vào trong phần xử lý thành công của AJAX
+					var url = "/shopbangiay-jsp-servlet" + $('a#clickproductdetail').attr('href');
+					window.location.href = url;
+	
+					// Xử lý dữ liệu phản hồi sau khi chuyển hướng
+					var colors = response.colors;
+					var size = response.size;
+					var images = response.images;
+					var df = response.detall_shoes;
+	
+					var i = 1;
+					images.forEach(function(image) {
+						$('#imageDataThumb' + i).attr('data-thumb', "/shopbangiay-jsp-servlet/" + image.id);
+						$('#imageIMG' + i).attr('src', "/shopbangiay-jsp-servlet/" + image.id);
+						$('#imageA' + i).attr('href', "/shopbangiay-jsp-servlet/" + image.id);
+						i++;
+					});
+	
+					colors.forEach(function(color) { // cập nhật colors
+						var option = $('<option>', { text: color.namee });
+						$('#color').append(option);
+					});
+					size.forEach(function(size) { // cập nhật size
+						var option = $('<option>', { text: size.size });
+						$('#sizes').append(option);
+					});
+					$('#nameShoe').text(df.name); // cập nhật tên
+					$('#PRICE').text('$' + df.price); // Cập nhật giá
+					$('#id_Shoe').val(df.id_SHOE);
+					$('#iddf').val(df.id);
+	
+					$('.wrap-slick3').each(function() {
+						$(this).find('.slick3').slick({
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							fade: true,
+							infinite: true,
+							autoplay: false,
+							autoplaySpeed: 6000,
+	
+							arrows: true,
+							appendArrows: $(this).find('.wrap-slick3-arrows'),
+							prevArrow: '<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+							nextArrow: '<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+	
+							dots: true,
+							appendDots: $(this).find('.wrap-slick3-dots'),
+							dotsClass: 'slick3-dots',
+							customPaging: function(slick, index) {
+								var portrait = $(slick.$slides[index]).data('thumb');
+								return '<img src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
+							},
+						});
+					});
+					
+				},
+				error: function(xhr, status, error) {
+					console.error("Error sending data:", error);
+				}
+			});
+		});
+	
+	
+	*/
+	// summit comment
+	$('#idsubmitform').on('click', function() {
+		var starCount = $('.starComment').find('.zmdi-star').length;
+		console.log(starCount);
+		var reviewContent = $('#review').val();
+		var iddetailshoe = $('#iddetailshoe').val();
+		var idaccount = $('#idaccount').val();
 		var data = {
-			"ID": id,
-			"NAME": nameShoe,
-			"PRICE": price,
-			"ID_SHOES": idshoes,
-			"ACTION": "productdetail"
+			"IDACC": idaccount,
+			"IDDF": iddetailshoe,
+			"COMMENT": reviewContent,
+			"RATE": starCount,
+			"ACTION": "COMMENT"
 		};
-
 		$.ajax({
-			type: "POST",
-			url: "/shopbangiay-jsp-servlet/api-web-productdetail",
+			type: "POST", 
+			url: "/shopbangiay-jsp-servlet/api-web-new", 
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			dataType: "json",
 			success: function(response) {
-				console.log(response + "productdetail");
-
-				// Di chuyển chuyển hướng trang vào trong phần xử lý thành công của AJAX
-				var url = "/shopbangiay-jsp-servlet" + $('a#clickproductdetail').attr('href');
-				window.location.href = url;
-
-				// Xử lý dữ liệu phản hồi sau khi chuyển hướng
-				var colors = response.colors;
-				var size = response.size;
-				var images = response.images;
-				var df = response.detall_shoes;
-
-				var i = 1;
-				images.forEach(function(image) {
-					$('#imageDataThumb' + i).attr('data-thumb', "/shopbangiay-jsp-servlet/" + image.id);
-					$('#imageIMG' + i).attr('src', "/shopbangiay-jsp-servlet/" + image.id);
-					$('#imageA' + i).attr('href', "/shopbangiay-jsp-servlet/" + image.id);
-					i++;
-				});
-
-				colors.forEach(function(color) { // cập nhật colors
-					var option = $('<option>', { text: color.namee });
-					$('#color').append(option);
-				});
-				size.forEach(function(size) { // cập nhật size
-					var option = $('<option>', { text: size.size });
-					$('#sizes').append(option);
-				});
-				$('#nameShoe').text(df.name); // cập nhật tên
-				$('#PRICE').text('$' + df.price); // Cập nhật giá
-				$('#id_Shoe').val(df.id_SHOE);
-				$('#iddf').val(df.id);
-
-				$('.wrap-slick3').each(function() {
-					$(this).find('.slick3').slick({
-						slidesToShow: 1,
-						slidesToScroll: 1,
-						fade: true,
-						infinite: true,
-						autoplay: false,
-						autoplaySpeed: 6000,
-
-						arrows: true,
-						appendArrows: $(this).find('.wrap-slick3-arrows'),
-						prevArrow: '<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-						nextArrow: '<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-
-						dots: true,
-						appendDots: $(this).find('.wrap-slick3-dots'),
-						dotsClass: 'slick3-dots',
-						customPaging: function(slick, index) {
-							var portrait = $(slick.$slides[index]).data('thumb');
-							return '<img src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
-						},
-					});
-				});
-				
+				console.log(response)
+				if (response.ACC != null) {
+					swal("Comment!", "success");
+					$('#review').val("");
+				} else {
+					alert("Vui lòng đăng nhập để comment.");
+				}
 			},
 			error: function(xhr, status, error) {
 				console.error("Error sending data:", error);
 			}
 		});
+
 	});
-
-
-*/
 
 	$('.js-hide-modal1').on('click', function() {
 		$('.js-modal1').removeClass('show-modal1');
-	
+
 		location.reload();
 
 	});
 
-	/*	$('.js-addcart-detail').each(function() {
-			var nameProduct = $(this).closest('.p-r-50').find('.js-name-detail').text().trim();
-			console.log($(this).closest('.col-md-6').find('.js-name-detail'));
-			$(this).on('click', function() {
-				swal(nameProduct, "đã được thêm vào giỏ hàng !", "success");
-			});
-		});
-	*/
 
 })(jQuery);

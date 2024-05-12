@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shopgiay.model.ACCOUNTS;
 import com.shopgiay.model.COLORS;
+import com.shopgiay.model.CommentsReviews;
 import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.IMAGES;
 import com.shopgiay.model.SIZES;
 import com.shopgiay.service.NewService;
 import com.shopgiay.util.JsonUtil;
+import com.shopgiay.util.SessionUtil;
 
 /**
  * Servlet implementation class productdetailController
@@ -29,6 +32,8 @@ public class productdetailController extends HttpServlet {
 		String iddf = request.getParameter("ID");
 		int id = Integer.parseInt(iddf);
 		
+		ACCOUNTS acc = (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
+		
 		DETAIL_SHOES df = NewService.getNewService().selectByIdDetail_SHOES(id);
 		
 		ArrayList<COLORS> colorsarr = NewService.getNewService().getColorsByID(id);
@@ -36,13 +41,22 @@ public class productdetailController extends HttpServlet {
 		ArrayList<SIZES> sizesarr = NewService.getNewService().getSizesByID(id);
 		
 		ArrayList<IMAGES> imageArr = NewService.getNewService().getImagesByID(id);
-		for (COLORS sizes : colorsarr) {
-			System.out.println(sizes.getNAMEE());
+		
+		ArrayList<CommentsReviews> commentsReviewsArr = NewService.getNewService().SelectAllByIDComment(id);
+		
+		for (CommentsReviews item : commentsReviewsArr) {
+			System.out.println(item.getIDDFSHOE());
 		}
 		request.setAttribute("colors", colorsarr);
 		request.setAttribute("size", sizesarr);
 		request.setAttribute("images", imageArr);
 		request.setAttribute("detall_shoes", df); 
+		request.setAttribute("comments", commentsReviewsArr); 
+		request.setAttribute("iddf", id);
+		if(acc != null) {
+			request.setAttribute("idacc", acc.getID());
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/productdetail.jsp");
 	    rd.forward(request, response);
 	}
