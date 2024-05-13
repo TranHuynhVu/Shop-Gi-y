@@ -20,7 +20,9 @@ com\shopgiay\controller\web\productdetailController.class
 com\shopgiay\model\IMAGES.class
 com\shopgiay\controller\web\api\ProductdetailApi.class
 com\shopgiay\dao\Idao.class
+com\shopgiay\util\EmailApiUtil.class
 com\shopgiay\dao\imple\daoImages.class
+com\shopgiay\model\CommentsReviews.class
 com\shopgiay\controller\web\api\ProductApi.class
 com\shopgiay\util\HttpUtil.class
 com\shopgiay\dao\imple\daoAccounts.class
@@ -29,9 +31,12 @@ com\shopgiay\controller\web\HomeController.class
 com\shopgiay\model\Model_Shoes.class
 com\shopgiay\dao\imple\daoSizes.class
 com\shopgiay\model\ACCOUNTS.class
+com\shopgiay\dao\imple\daoCommentReviews.class
+com\shopgiay\util\EmailApiUtil$1.class
 com\shopgiay\dao\imple\daoCarts.class
 com\shopgiay\controller\web\AboutController.class
 com\shopgiay\filter\AuthorizationFilter.class
+com\shopgiay\model\imple\ModelCarts.class
 com\shopgiay\model\UserModel.class
 com\shopgiay\model\CATEGORIES.class
 com\shopgiay\model\SIZES.class

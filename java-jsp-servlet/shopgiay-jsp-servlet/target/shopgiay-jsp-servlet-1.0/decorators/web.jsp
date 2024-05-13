@@ -37,6 +37,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/template/web/css/util.css'/>">
 	<link rel="stylesheet" type="text/css" href="<c:url value='/template/web/css/main.css'/>">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--===============================================================================================-->
 	<title><dec:title default="Trang chu" /></title>
 
@@ -165,7 +166,67 @@
 				$(this).off('click');
 			});
 		});
+		function initSlickSlider() {
+		    $('.wrap-slick3').each(function() {
+		        $(this).find('.slick3').slick({
+		            slidesToShow: 1,
+		            slidesToScroll: 1,
+		            fade: true,
+		            infinite: true,
+		            autoplay: false,
+		            autoplaySpeed: 6000,
 
+		            arrows: true,
+		            appendArrows: $(this).find('.wrap-slick3-arrows'),
+		            prevArrow: '<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+		            nextArrow: '<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+
+		            dots: true,
+		            appendDots: $(this).find('.wrap-slick3-dots'),
+		            dotsClass: 'slick3-dots',
+		            customPaging: function(slick, index) {
+		                var portrait = $(slick.$slides[index]).data('thumb');
+		                return '<img src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
+		            },
+		        });
+		    });
+		}
+
+		$('.js-addcart-detail').each(function() {
+			var nameProduct = $(this).closest('.click-js-addcart-detail').find('.js-name-detail').text().trim();
+			$(this).on('click', function() {
+				var data = {
+					"ID": $('#iddf').val(),
+					"QUANTITY": $('#num-product').val(),
+					"COLOR": $('#color').val(),
+					"SIZES": $('#sizes').val(),
+					"ACTION": "AddCart"
+				};
+				$.ajax({
+					type: "POST",
+					url: "/shopbangiay-jsp-servlet/api-web-new",
+					data: JSON.stringify(data),
+					contentType: "application/json",
+					dataType: "json",
+					success: function(response) {
+						console.log(response + "AddCart");
+						if (response.ACC != null) {
+							swal(nameProduct, "is added to cart !", "success");
+						}else{
+							alert("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
+							console.log("Vui lòng đăng nhập để xem chi tiết sản phẩm.")
+						}
+						
+						
+					},
+					error: function(xhr, status, error) {
+						console.error("Error sending data:", error);
+					}
+				});
+
+
+			});
+		});
 		/*---------------------------------------------*/
 
 /* 		$('.js-addcart-detail').each(function(){

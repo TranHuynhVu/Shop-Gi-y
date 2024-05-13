@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 import com.shopgiay.dao.imple.daoAccounts;
 import com.shopgiay.dao.imple.daoDetail_Shoes;
 import com.shopgiay.model.ACCOUNTS;
@@ -54,6 +55,14 @@ public class HomeController extends HttpServlet {
 		     request.setAttribute("listCategories", arrCategories);
 		     request.setAttribute("listShoes", arrShoes);
 		     request.setAttribute("activeMenu", "home");
+		     ACCOUNTS acc= (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
+		     if(acc != null) {
+		    	 int indexIconCart= NewService.getNewService().getSoLuongCartByIdAcc(acc.getID());
+		    	 request.setAttribute("indexIconCart", indexIconCart);
+		     }else {
+		    	 request.setAttribute("indexIconCart", 0);
+			}
+		     
 		     RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 		     rd.forward(request, response);
 		}	

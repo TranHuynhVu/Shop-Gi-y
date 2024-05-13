@@ -26,11 +26,20 @@ public class ShopingCartController extends HttpServlet {
 		/* request.setAttribute("activeMenu", "shopingcart"); */
 		
 		ACCOUNTS acc = (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
-		
+	     if(acc != null) {
+	    	 int indexIconCart= NewService.getNewService().getSoLuongCartByIdAcc(acc.getID());
+	    	 request.setAttribute("indexIconCart", indexIconCart);
+	     }else {
+	    	 request.setAttribute("indexIconCart", 0);
+		}		
 		ArrayList<CARTS> cartsArr= NewService.getNewService().selectAllByIDCarts(acc.getID());
-		
+		double tongtien =0;
+		for (CARTS carts : cartsArr) {
+			tongtien += carts.getPrice() * carts.getQUANTITY();
+		}
 		request.setAttribute("Carts", cartsArr);
-		
+		System.out.println(tongtien);
+		request.setAttribute("tongtien", tongtien);
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/shopingCart.jsp");
         rd.forward(request, response);
 	}

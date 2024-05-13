@@ -33,6 +33,12 @@ public class productdetailController extends HttpServlet {
 		int id = Integer.parseInt(iddf);
 		
 		ACCOUNTS acc = (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
+	     if(acc != null) {
+	    	 int indexIconCart= NewService.getNewService().getSoLuongCartByIdAcc(acc.getID());
+	    	 request.setAttribute("indexIconCart", indexIconCart);
+	     }else {
+	    	 request.setAttribute("indexIconCart", 0);
+		}
 		
 		DETAIL_SHOES df = NewService.getNewService().selectByIdDetail_SHOES(id);
 		

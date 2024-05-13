@@ -60,6 +60,7 @@ public class MySQLDataAccess {
 				}
 				rs = pstm.executeQuery();
 			} catch (SQLException e) {
+				System.out.println("Lỗi");
 				e.printStackTrace();
 			}
 		}
@@ -78,6 +79,7 @@ public class MySQLDataAccess {
 			}
 			k = pstm.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println("Lỗi");
 			e.printStackTrace();
 		}
 		return k;

@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.service.NewService;
+import com.shopgiay.util.EmailApiUtil;
+import com.shopgiay.util.SessionUtil;
+
 @WebServlet(urlPatterns = { "/contact" })
 public class contactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,7 +21,24 @@ public class contactController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("activeMenu", "contact");
-
+		ACCOUNTS acc = (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
+		if (acc != null) {
+			int indexIconCart = NewService.getNewService().getSoLuongCartByIdAcc(acc.getID());
+			request.setAttribute("NameEmail", acc.getEMAIL());
+			String msgString= request.getParameter("msg");
+			System.out.println(msgString);
+			if(msgString != null) {
+				try {
+					EmailApiUtil.sendEmail("tranhuynhvu2k4@gmail.com", "TestEmail", msgString);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			
+		} else {
+			request.setAttribute("indexIconCart", 0);
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/contact.jsp");
 		rd.forward(request, response);
 	}

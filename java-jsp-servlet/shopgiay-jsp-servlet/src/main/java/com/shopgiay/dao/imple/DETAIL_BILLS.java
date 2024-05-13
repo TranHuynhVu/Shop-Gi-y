@@ -1,0 +1,56 @@
+package com.shopgiay.dao.imple;
+
+public class DETAIL_BILLS {
+	private int ID;
+    private int ID_BILL;
+    private int ID_DETAIL_SHOE;
+    private int COUNTT;
+    private double PRICE;
+	public DETAIL_BILLS(int iD, int iD_BILL, int iD_DETAIL_SHOE, int cOUNTT, double pRICE) {
+		super();
+		ID = iD;
+		ID_BILL = iD_BILL;
+		ID_DETAIL_SHOE = iD_DETAIL_SHOE;
+		COUNTT = cOUNTT;
+		PRICE = pRICE;
+	}
+	public DETAIL_BILLS() {
+		super();
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public int getID_BILL() {
+		return ID_BILL;
+	}
+	public void setID_BILL(int iD_BILL) {
+		ID_BILL = iD_BILL;
+	}
+	public int getID_DETAIL_SHOE() {
+		return ID_DETAIL_SHOE;
+	}
+	public void setID_DETAIL_SHOE(int iD_DETAIL_SHOE) {
+		ID_DETAIL_SHOE = iD_DETAIL_SHOE;
+	}
+	public int getCOUNTT() {
+		return COUNTT;
+	}
+	public void setCOUNTT(int cOUNTT) {
+		COUNTT = cOUNTT;
+	}
+	public double getPRICE() {
+		return PRICE;
+	}
+	public void setPRICE(double pRICE) {
+		PRICE = pRICE;
+	}
+	@Override
+	public String toString() {
+		return "DETAIL_BILLS [ID=" + ID + ", ID_BILL=" + ID_BILL + ", ID_DETAIL_SHOE=" + ID_DETAIL_SHOE + ", COUNTT="
+				+ COUNTT + ", PRICE=" + PRICE + "]";
+	}
+    
+}

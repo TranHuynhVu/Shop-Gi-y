@@ -1,0 +1,148 @@
+package com.shopgiay.dao.imple;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import com.shopgiay.dao.Idao;
+import com.shopgiay.dao.MySQLDataAccess;
+import com.shopgiay.model.CARTS;
+
+public class daoCarts implements Idao<CARTS> {
+	MySQLDataAccess con = null;
+
+	public static daoCarts getDaocarts() {
+		return new daoCarts();
+	}
+
+	public daoCarts() {
+		con = new MySQLDataAccess();
+	}
+
+	@Override
+	public int Insert(CARTS t) {
+		int result = 0;
+		String sql = "INSERT INTO CARTS (ID_ACCOUNT, ID_DETAIL_SHOE, QUANTITY, SIZE, COLOR) VALUES (?, ?, ?, ?, ?)";
+		result = con.ExecuteUpdateSQL(sql, t.getACCOUNTID(), t.getDETAILSHOEID(), t.getQUANTITY(), t.getSIZECARTS(),
+				t.getCOLORCARTS());
+		System.out.println("Insert carts thanh cong");
+		return result;
+	}
+
+	@Override
+	public int Update(CARTS t) {
+		int result = 0;
+		String sql = "UPDATE CARTS SET QUANTITY = ? WHERE ID = ? AND ID_ACCOUNT = ?";
+		result = con.ExecuteUpdateSQL(sql, t.getQUANTITY(), t.getIDCARTS(), t.getACCOUNTID());
+		return result;
+	}
+
+	@Override
+	public int Delete(CARTS t) {
+		int result = 0;
+		String sql = "DELETE FROM CARTS WHERE ID = ?";
+		result = con.ExecuteUpdateSQL(sql, t.getIDCARTS());
+		return result;
+	}
+
+	@Override
+	public ArrayList<CARTS> SelectAll() {
+		ArrayList<CARTS> arr = new ArrayList<CARTS>();
+		String sql = "SELECT * FROM CARTS";
+		ResultSet rs = con.getResultSet(sql);
+		try {
+			while (rs.next()) {
+				CARTS cart = new CARTS(rs.getInt("IDCARTS"), rs.getInt("ACCOUNTID"), rs.getInt("DETAILSHOEID"),
+						rs.getInt("QUANTITY"), rs.getString("SIZECARTS"), rs.getString("COLORCARTS"));
+				arr.add(cart);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+
+	@Override
+	public CARTS SelectByID(CARTS t) {
+		CARTS cart = null;
+		String sql = "SELECT * FROM CARTS WHERE IDCARTS = ?";
+		ResultSet rs = con.getResultSet(sql, t.getIDCARTS());
+		try {
+			while (rs.next()) {
+				cart = new CARTS(rs.getInt("IDCARTS"), rs.getInt("ACCOUNTID"), rs.getInt("DETAILSHOEID"),
+						rs.getInt("QUANTITY"), rs.getString("SIZECARTS"), rs.getString("COLORCARTS"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cart;
+	}
+	public int SelectByIDACC(int idacc) {
+		int ketqua =0;
+		String sql = "SELECT * FROM CARTS WHERE ID_ACCOUNT = ?";
+		ResultSet rs = con.getResultSet(sql, idacc);
+		try {
+			while (rs.next()) {
+				ketqua+= 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+	public ArrayList<CARTS> SelectAllByID(int id) {
+		ArrayList<CARTS> arr = new ArrayList<CARTS>();
+		String sql = "SELECT \r\n"
+				+ "    carts.ID AS cart_id,\r\n"
+				+ "    (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = detail_shoes.ID LIMIT 1) AS image_url,\r\n"
+				+ "    shoes.NAMEE AS shoe_name,\r\n"
+				+ "    carts.QUANTITY AS quantity_in_cart,\r\n"
+				+ "    detail_shoes.PRICE AS price,\r\n"
+				+ "    detail_shoes.ID AS detail_shoe_id\r\n"
+				+ "FROM \r\n"
+				+ "    carts\r\n"
+				+ "JOIN \r\n"
+				+ "    detail_shoes ON carts.ID_DETAIL_SHOE = detail_shoes.ID\r\n"
+				+ "JOIN \r\n"
+				+ "    shoes ON detail_shoes.ID_SHOE = shoes.ID\r\n"
+				+ "WHERE carts.ID_ACCOUNT = ?";
+		ResultSet rs = con.getResultSet(sql, id);
+		try {
+			while (rs.next()) {
+				CARTS cart = new CARTS();
+				cart.setIDCARTS(rs.getInt("cart_id"));
+				cart.setImage_url(rs.getString("image_url"));	
+				cart.setShoe_name(rs.getString("shoe_name"));	
+				cart.setQUANTITY(rs.getInt("quantity_in_cart"));;	
+				cart.setPrice(rs.getDouble("price"));	
+				cart.setDETAILSHOEID(rs.getInt("detail_shoe_id"));;	
+				arr.add(cart);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	
+	public CARTS SelectAllBy_ID_IDACC(int id, int idacc) {
+		CARTS cart = null;
+		String sql = "SELECT c.ID, c.ID_ACCOUNT, c.ID_DETAIL_SHOE, c.QUANTITY, c.SIZE, c.COLOR, d.PRICE\r\n"
+				+ "FROM CARTS c\r\n"
+				+ "JOIN DETAIL_SHOES d ON c.ID_DETAIL_SHOE = d.ID\r\n"
+				+ "WHERE c.ID_ACCOUNT = ? and c.id = ?;\r\n"
+				+ "";
+		ResultSet rs = con.getResultSet(sql, idacc, id);
+		try {
+			while (rs.next()) {
+				cart = new CARTS();
+				cart.setIDCARTS(rs.getInt("ID"));
+				cart.setDETAILSHOEID(rs.getInt("ID_DETAIL_SHOE"));	
+				cart.setQUANTITY(rs.getInt("QUANTITY"));;	
+				cart.setPrice(rs.getDouble("PRICE"));	
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cart;
+	}
+}

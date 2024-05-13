@@ -1947,6 +1947,12 @@ input.num-product::-webkit-inner-spin-button {
   text-align: right;
   font-size: 16px;
 }
+.table-shopping-cart .column-6 {
+  width: 70px;
+  padding-right: 50px;
+  text-align: right;
+  font-size: 16px;
+}
 
 .table-shopping-cart .table_row {
   height: 185px;
@@ -2511,8 +2517,8 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-119 {
-  min-width: 156px;
-  height: 45px;
+  min-width: 44px;
+  height: 32px;
 }
 
 .size-120 {
@@ -2731,7 +2737,6 @@ input.num-product::-webkit-inner-spin-button {
 
 .bor13 {
   border: 1px solid #e6e6e6;
-  border-radius: 22px;
 }
 
 .bor14 {

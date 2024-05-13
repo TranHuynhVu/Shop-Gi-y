@@ -1,0 +1,9 @@
+package com.shopgiay.model;
+
+public class NOTIFICATIONS {
+	private int IDNOTIF;
+	private String DETAIL;
+	private int SEEN;
+	private int ID_ACCOUNT;
+	
+}

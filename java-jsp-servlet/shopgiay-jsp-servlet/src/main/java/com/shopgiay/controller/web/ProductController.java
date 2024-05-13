@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shopgiay.model.ACCOUNTS;
 import com.shopgiay.model.CATEGORIES;
 import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.SHOES;
@@ -25,7 +26,13 @@ public class ProductController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		ACCOUNTS acc= (ACCOUNTS) SessionUtil.getSessionUtil().getValue(request, "ACC");
+	     if(acc != null) {
+	    	 int indexIconCart= NewService.getNewService().getSoLuongCartByIdAcc(acc.getID());
+	    	 request.setAttribute("indexIconCart", indexIconCart);
+	     }else {
+	    	 request.setAttribute("indexIconCart", 0);
+		}
 		String filtersort = request.getParameter("filtersort");
 		String filterprice = request.getParameter("filterprice");
 

@@ -8,11 +8,11 @@
 <title>About</title>
 </head>
 <body>
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92"
-		style="background-image: url('<c:url value='/template/web/images/images/bg-01.jpg'/>');">
+<!-- 	<section class="bg-img1 txt-center p-lr-15 p-tb-92"
+		style="background-image: url(/shopbangiay-jsp-servlet/Images/Shoe image/Nike InfinityRN 4/Green white/green_white_8.png);">
 		<h2 class="ltext-105 cl0 txt-center">About</h2>
 	</section>
-
+ -->
 
 	<!-- Content page -->
 	<section class="bg0 p-t-75 p-b-120">
@@ -22,40 +22,30 @@
 					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
 						<h3 class="mtext-111 cl2 p-b-16">Our Story</h3>
 
-						<p class="stext-113 cl6 p-b-26">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Mauris consequat consequat enim, non
-							auctor massa ultrices non. Morbi sed odio massa. Quisque at
-							vehicula tellus, sed tincidunt augue. Orci varius natoque
-							penatibus et magnis dis parturient montes, nascetur ridiculus
-							mus. Maecenas varius egestas diam, eu sodales metus scelerisque
-							congue. Pellentesque habitant morbi tristique senectus et netus
-							et malesuada fames ac turpis egestas. Maecenas gravida justo eu
-							arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum
-							eget, dictum enim. Donec non neque ut enim dapibus tincidunt
-							vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec
-							condimentum euismod tortor, eget facilisis diam faucibus et.
-							Morbi a tempor elit.</p>
+						<p class="stext-113 cl6 p-b-26">Hành trình của chúng tôi bắt
+							đầu với một niềm đam mê cháy bỏng với giày dép và sự mong muốn
+							chia sẻ niềm đam mê đó với mọi người. Nơi mà mọi bước chân đều là
+							một câu chuyện, một tấm lòng. Chúng tôi mở cửa hàng giày với mục
+							tiêu không chỉ là nơi để mua sắm, mà còn là nơi để trải nghiệm và
+							chia sẻ những câu chuyện.</p>
 
-						<p class="stext-113 cl6 p-b-26">Donec gravida lorem elit, quis
-							condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam
-							aliquam imperdiet sodales. Ut fringilla turpis in vehicula
-							vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat
-							volutpat. Donec iaculis lectus a arcu facilisis, eu sodales
-							lectus sagittis. Etiam pellentesque, magna vel dictum rutrum,
-							neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed
-							rutrum, turpis ut commodo efficitur, quam velit convallis ipsum,
-							et maximus enim ligula ac ligula.</p>
+						<p class="stext-113 cl6 p-b-26">Với mỗi đôi giày được chọn lựa
+							kỹ càng, chúng tôi muốn tạo ra một trải nghiệm mua sắm đầy ấn
+							tượng và độc đáo. Mỗi chiếc giày không chỉ là một sản phẩm, mà
+							còn là một phần của cuộc sống, là một biểu tượng của phong cách
+							và cá tính.</p>
 
-						<p class="stext-113 cl6 p-b-26">Any questions? Let us know in
-							store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
-							on (+1) 96 716 6879</p>
+						<p class="stext-113 cl6 p-b-26">Từ những đôi giày thoải mái
+							dành cho ngày dạo phố đến những đôi giày lịch lãm dành cho buổi
+							tiệc tối, chúng tôi tự hào mang đến cho khách hàng một sự đa dạng
+							với các thương hiệu hàng đầu và các mẫu mã phong phú.</p>
 					</div>
 				</div>
 
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
 					<div class="how-bor1 ">
 						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
+							<img src="/shopbangiay-jsp-servlet/Images/Shoe image/Nike Air Max Plus/air-max-plus-shoes-4.png" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -66,28 +56,46 @@
 					<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
 						<h3 class="mtext-111 cl2 p-b-16">Our Mission</h3>
 
-						<p class="stext-113 cl6 p-b-26">Mauris non lacinia magna. Sed
-							nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed
-							consectetur erat. Pellentesque habitant morbi tristique senectus
-							et netus et malesuada fames ac turpis egestas. Nullam maximus
-							mauris sit amet odio convallis, in pharetra magna gravida.
-							Praesent sed nunc fermentum mi molestie tempor. Morbi vitae
-							viverra odio. Pellentesque ac velit egestas, luctus arcu non,
-							laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor
-							ante. Ut mauris ligula, volutpat in sodales in, porta non odio.
-							Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla
-							lobortis. Proin at gravida ante. Mauris auctor purus at lacus
-							maximus euismod. Pellentesque vulputate massa ut nisl hendrerit,
-							eget elementum libero iaculis.</p>
+						<p class="stext-113 cl6 p-b-26">Nhiệm vụ của chúng tôi không
+							chỉ là bán giày, mà còn là tạo ra một cộng đồng đam mê và sự kết
+							nối thông qua niềm đam mê chung về giày dép. Chúng tôi cam kết
+							mang đến cho khách hàng trải nghiệm mua sắm độc đáo và không thể
+							nào quên, kết hợp với dịch vụ chăm sóc khách hàng tận tình và chu
+							đáo. Chúng tôi đặt ra một số mục tiêu cụ thể:</p>
+						<p class="stext-113 cl6 p-b-26">1. Đa dạng sản phẩm: Chúng tôi
+							luôn cập nhật và mang đến cho khách hàng một loạt các sản phẩm từ
+							các thương hiệu uy tín và các xu hướng mới nhất trong ngành giày
+							dép.</p>
+						<p class="stext-113 cl6 p-b-26">2. Chất lượng hàng đầu: Chúng
+							tôi chọn lựa kỹ lưỡng từng sản phẩm để đảm bảo chất lượng và sự
+							thoải mái cho người sử dụng.</p>
 
+						<p class="stext-113 cl6 p-b-26">3. Trải nghiệm mua sắm độc
+							đáo: Chúng tôi tạo ra không gian mua sắm thân thiện và ấm cúng,
+							nơi mà khách hàng có thể thảo luận, chia sẻ và tìm kiếm những đôi
+							giày phản ánh phong cách và cá tính của họ.</p>
+
+						<p class="stext-113 cl6 p-b-26">4. Tạo cộng đồng: Chúng tôi
+							xây dựng một cộng đồng đam mê quanh chủ đề giày dép, nơi mọi
+							người có thể kết nối, chia sẻ và học hỏi từ nhau.</p>
+
+						<p class="stext-113 cl6 p-b-26">5. Phục vụ khách hàng tận
+							tình: Chúng tôi cam kết luôn lắng nghe và đáp ứng nhanh chóng mọi
+							nhu cầu và yêu cầu của khách hàng, từ khi họ bước vào cửa hàng
+							cho đến khi họ rời đi với một đôi giày ưng ý.</p>
+
+						<p class="stext-113 cl6 p-b-26">6. Đa dạng sản phẩm: Chúng tôi
+							luôn cập nhật và mang đến cho khách hàng một loạt các sản phẩm từ
+							các thương hiệu uy tín và các xu hướng mới nhất trong ngành giày
+							dép.</p>
+						<p class="stext-113 cl6 p-b-26">Tất cả những nỗ lực của
+							chúng tôi hướng đến một mục tiêu duy nhất: mang lại niềm vui và
+							sự hài lòng tuyệt đối cho khách hàng trong mỗi trải nghiệm mua
+							sắm tại cửa hàng của chúng tôi.</p>
 						<div class="bor16 p-l-29 p-b-9 m-t-22">
-							<p class="stext-114 cl6 p-r-40 p-b-11">Creativity is just
-								connecting things. When you ask creative people how they did
-								something, they feel a little guilty because they didn't really
-								do it, they just saw something. It seemed obvious to them after
-								a while.</p>
-
-							<span class="stext-111 cl8"> - Steve Job’s </span>
+							<p class="stext-114 cl6 p-r-40 p-b-11"></p>
+	
+							<span class="stext-111 cl8"> - Trần Huỳnh Vũ </span>
 						</div>
 					</div>
 				</div>
@@ -95,7 +103,7 @@
 				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 					<div class="how-bor2">
 						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
+							<img src="/shopbangiay-jsp-servlet/Images/Shoe image/Nike InfinityRN 4/Green white/green_white_8.png" alt="IMG">
 						</div>
 					</div>
 				</div>

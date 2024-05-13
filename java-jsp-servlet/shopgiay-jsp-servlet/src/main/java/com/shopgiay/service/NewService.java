@@ -70,4 +70,23 @@ public class NewService {
 	public ArrayList<CARTS> selectAllByIDCarts(int id){
 		return daoCarts.getDaocarts().SelectAllByID(id);
 	}
+	public void DeleteCart(int id) {
+		CARTS carts = new CARTS();
+		carts.setIDCARTS(id);
+		daoCarts.getDaocarts().Delete(carts);
+	}
+	public void UpdateCart(int key, int soluong, int acc) {
+		CARTS carts = new CARTS();
+		carts.setIDCARTS(key);
+		carts.setQUANTITY(soluong);
+		carts.setACCOUNTID(acc);
+		daoCarts.getDaocarts().Update(carts);
+	}
+
+	public int getSoLuongCartByIdAcc(int id) {
+		return daoCarts.getDaocarts().SelectByIDACC(id);
+	}
+	public CARTS SelectAllBy_ID_IDACC(int id, int idacc){
+		return daoCarts.getDaocarts().SelectAllBy_ID_IDACC(id, idacc);
+	}
 }

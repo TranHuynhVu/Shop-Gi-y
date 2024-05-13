@@ -20,13 +20,14 @@
 
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+<!-- 	<form class="bg0 p-t-75 p-b-85"> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
+							<thead>
 								<tr class="table_head">
 									<th class="column-1">Product</th>
 									<th class="column-2"></th>
@@ -35,6 +36,8 @@
 									<th class="column-5">Total</th>
 									<th class="column-6"></th>
 								</tr>
+							</thead>
+							<tbody>
 								<c:forEach var="cart" items="${Carts}">
 									<tr class="table_row">
 										<td class="column-1">
@@ -47,24 +50,25 @@
 										<td class="column-4">
 											<div class="wrap-num-product flex-w m-l-auto m-r-0">
 												<div
-													class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+													class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick = "btnnumproductdown(this)">
 													<i class="fs-16 zmdi zmdi-minus"></i>
 												</div>
 
-												<input class="mtext-104 cl3 txt-center num-product"
-													type="number" name="num-product1" value="${cart.getQUANTITY()}">
+												<input class="mtext-104 cl3 txt-center num-product num-product-cart"
+													data-id="${cart.getIDCARTS()}" type="number" name="num-product1" value="${cart.getQUANTITY()}">
 
 												<div
-													class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+													class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick = "btnnumproductup(this)">
 													<i class="fs-16 zmdi zmdi-plus"></i>
 												</div>
 											</div>
 										</td>
-										<td class="column-5">${cart.getQUANTITY() * cart.getPrice()}</td>
-										<td class="column-5"><i class="fa-solid fa-trash-can"></i></td>
+										<td class="column-5"> $${cart.getQUANTITY() * cart.getPrice()}</td>
+										<td class="column-6" onclick = "DeleteCart(this)"><div data-id="${cart.getIDCARTS()}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 btnXoaCart"><i class="fa-solid fa-trash"></i></div></td>
 									</tr>
 
 								</c:forEach>
+								</tbody>
 
 							</table>
 						</div>
@@ -82,7 +86,7 @@
 							</div>
 
 							<div
-								class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+								class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 UpdateCart">
 								Update Cart</div>
 						</div>
 					</div>
@@ -99,7 +103,7 @@
 							</div>
 
 							<div class="size-209">
-								<span class="mtext-110 cl2"> $79.65 </span>
+								<span class="mtext-110 cl2 tongtien"> $${tongtien} </span>
 							</div>
 						</div>
 
@@ -118,21 +122,21 @@
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 										<select class="js-select2" name="time">
-											<option>Select a country...</option>
-											<option>USA</option>
-											<option>UK</option>
+											<option>Select a Province, City ...</option>
+											<option>HCM</option>
+											<option>HN</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="state" placeholder="State /  country">
+											name="state" placeholder="District">
 									</div>
 
 									<div class="bor8 bg0 m-b-22">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="postcode" placeholder="Postcode / Zip">
+											name="postcode" placeholder="Commune">
 									</div>
 
 									<div class="flex-w">
@@ -151,17 +155,17 @@
 							</div>
 
 							<div class="size-209 p-t-1">
-								<span class="mtext-110 cl2"> $79.65 </span>
+								<span class="mtext-110 cl2 tongtien"> $${tongtien} </span>
 							</div>
 						</div>
 
 						<button
-							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer mua-Carts">
 							Proceed to Checkout</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+<!-- 	</form> -->
 </body>
 </html>

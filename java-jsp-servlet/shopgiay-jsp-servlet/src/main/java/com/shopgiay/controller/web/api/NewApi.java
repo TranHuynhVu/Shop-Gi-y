@@ -1,8 +1,10 @@
 package com.shopgiay.controller.web.api;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,14 +15,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.HTML;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Delete;
+import com.shopgiay.dao.imple.DETAIL_BILLS;
+import com.shopgiay.dao.imple.daoBills;
+import com.shopgiay.dao.imple.daoCarts;
 import com.shopgiay.dao.imple.daoColos;
+import com.shopgiay.dao.imple.daoDetailBills;
+import com.shopgiay.dao.imple.daoDetail_Shoes;
 import com.shopgiay.dao.imple.daoShoes;
 import com.shopgiay.dao.imple.daoSizes;
 import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.BILLS;
 import com.shopgiay.model.CARTS;
 import com.shopgiay.model.COLORS;
 import com.shopgiay.model.CommentsReviews;
@@ -143,7 +154,6 @@ public class NewApi extends HttpServlet {
 				int RATE = object.getInt("RATE");
 				
 				if(COMMENT.isEmpty() || RATE == 0) {
-					System.out.println("aa");
 					obMap.put("commentrate", "commentrate");
 				}else {
 					CommentsReviews commentsReviews = new CommentsReviews();
@@ -156,9 +166,144 @@ public class NewApi extends HttpServlet {
 					NewService.getNewService().InsertComment(commentsReviews);
 				}
 				
-
+			}
+			if(action.equals("DELETECART")) {
+				System.out.println("Delete Cart");
+				int IDCART = object.getInt("IDCART");
+				NewService.getNewService().DeleteCart(IDCART);
 				
-	
+				ArrayList<CARTS> cartsArr= NewService.getNewService().selectAllByIDCarts(acc.getID());
+				
+				String html ="";
+				double tongtien = 0;
+				for (CARTS cart : cartsArr) {
+					tongtien += cart.getPrice() * cart.getQUANTITY();
+					html+="<tr class=\"table_row\">\r\n"
+							+ "										<td class=\"column-1\">\r\n"
+							+ "											<div class=\"how-itemcart1\">\r\n"
+							+ "												<img src=\""+cart.getImage_url()+"\" alt=\"IMG\">\r\n"
+							+ "											</div>\r\n"
+							+ "										</td>\r\n"
+							+ "										<td class=\"column-2\">"+cart.getShoe_name()+"</td>\r\n"
+							+ "										<td class=\"column-3\">$"+cart.getPrice()+"</td>\r\n"
+							+ "										<td class=\"column-4\">\r\n"
+							+ "											<div class=\"wrap-num-product flex-w m-l-auto m-r-0\">\r\n"
+							+ "												<div\r\n"
+							+ "													onclick = \"btnnumproductdown(this)\" class=\"btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m\">\r\n"
+							+ "													<i class=\"fs-16 zmdi zmdi-minus\"></i>\r\n"
+							+ "												</div>\r\n"
+							+ "\r\n"
+							+ "												<input class=\"mtext-104 cl3 txt-center num-product\"\r\n"
+							+ "													data-id=\""+cart.getIDCARTS()+" type=\"number\" name=\"num-product1\" value=\""+cart.getQUANTITY()+"\">\r\n"
+							+ "\r\n"
+							+ "												<div\r\n" 
+							+ "													onclick = \"btnnumproductup(this)\" class=\"btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m\">\r\n" 
+							+ "													<i class=\"fs-16 zmdi zmdi-plus\"></i>\r\n"
+							+ "												</div>\r\n"
+							+ "											</div>\r\n"
+							+ "										</td>\r\n"
+							+ "										<td class=\"column-5\">"+cart.getQUANTITY() * cart.getPrice()+"</td>\r\n"
+							+ "										<td class=\"column-6\" onclick = 'DeleteCart(this)'><div data-id=\""+cart.getIDCARTS()+"\" class=\"flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 btnXoaCart\"><i class=\"fa-solid fa-trash\"></i></div></td>\r\n"
+							+ "									</tr>";
+				}
+				
+				obMap.put("html", html);
+				obMap.put("tongtien", tongtien);
+			}
+			if(action.equals("UPDATECART")) {
+
+				JSONArray cartArray = object.getJSONArray("CART");
+				  // Lặp qua các phần tử trong mảng "CART"
+		        for (int i = 0; i < cartArray.length(); i++) {
+		            JSONObject cartItem = cartArray.getJSONObject(i);
+		            // Lặp qua các cặp key-value trong từng phần tử
+		            for (String key : cartItem.keySet()) {
+		            	  String id = key;
+		                  int quantity = cartItem.getInt(key);
+		                NewService.getNewService().UpdateCart(Integer.parseInt(id), quantity, acc.getID());
+		            }
+		        }
+				ArrayList<CARTS> cartsArr= NewService.getNewService().selectAllByIDCarts(acc.getID());
+				String html ="";
+				double tongtien = 0;
+				for (CARTS cart : cartsArr) {
+					tongtien += cart.getPrice() * cart.getQUANTITY();
+					html+="<tr class=\"table_row\">\r\n"
+							+ "										<td class=\"column-1\">\r\n"
+							+ "											<div class=\"how-itemcart1\">\r\n"
+							+ "												<img src=\""+cart.getImage_url()+"\" alt=\"IMG\">\r\n"
+							+ "											</div>\r\n"
+							+ "										</td>\r\n"
+							+ "										<td class=\"column-2\">"+cart.getShoe_name()+"</td>\r\n"
+							+ "										<td class=\"column-3\">$"+cart.getPrice()+"</td>\r\n"
+							+ "										<td class=\"column-4\">\r\n"
+							+ "											<div class=\"wrap-num-product flex-w m-l-auto m-r-0\">\r\n"
+							+ "												<div\r\n"
+							+ "													onclick = \"btnnumproductdown(this)\" class=\"btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m\">\r\n"
+							+ "													<i class=\"fs-16 zmdi zmdi-minus\"></i>\r\n"
+							+ "												</div>\r\n"
+							+ "\r\n"
+							+ "												<input class=\"mtext-104 cl3 txt-center num-product\"\r\n"
+							+ "													data-id=\""+cart.getIDCARTS()+" type=\"number\" name=\"num-product1\" value=\""+cart.getQUANTITY()+"\">\r\n"
+							+ "\r\n"
+							+ "												<div\r\n" 
+							+ "													onclick = \"btnnumproductup(this)\" class=\"btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m\">\r\n" 
+							+ "													<i class=\"fs-16 zmdi zmdi-plus\"></i>\r\n"
+							+ "												</div>\r\n"
+							+ "											</div>\r\n"
+							+ "										</td>\r\n"
+							+ "										<td class=\"column-5\"> $"+cart.getQUANTITY() * cart.getPrice()+"</td>\r\n"
+							+ "										<td class=\"column-6\" onclick = 'DeleteCart(this)'><div data-id=\""+cart.getIDCARTS()+"\" class=\"flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 btnXoaCart\"><i class=\"fa-solid fa-trash\"></i></div></td>\r\n"
+							+ "									</tr>";
+				}
+				
+				obMap.put("html", html);
+				obMap.put("tongtien", tongtien);
+			}
+			if(action.equals("MUACARTS")) {
+				System.out.println("MUACARTS");
+				JSONArray cartArray = object.getJSONArray("CART");
+				int trangthai = 0;
+				if(cartArray != null) {
+					
+					// ngày giờ hiện tại
+	                  long currentTimeMillis = System.currentTimeMillis();
+	                  Date currentDate = new Date(currentTimeMillis);
+	                  
+	                  BILLS bills= new BILLS();
+	                  bills.setDATECHECKIN(currentDate);
+	                  bills.setID_ACCOUNT(acc.getID());
+	                  
+	                  // insert bills
+	                  daoBills.getDaoBills().Insert(bills);
+	                  
+	                  // lấy id bills vừa insert
+	                  BILLS idBills= daoBills.getDaoBills().Select_Top1_ByIDACC(acc.getID());
+	                  
+					
+					  // Lặp qua các phần tử trong mảng "CART"
+			        for (int i = 0; i < cartArray.length(); i++) {
+			            JSONObject cartItem = cartArray.getJSONObject(i);
+			                 
+			            // Lặp qua các cặp key-value trong từng phần tử
+			            for (String key : cartItem.keySet()) {
+			            	  String id = key;
+
+			                  CARTS carts = NewService.getNewService().SelectAllBy_ID_IDACC(Integer.parseInt(id), acc.getID());
+			                  daoCarts.getDaocarts().Delete(carts);
+			                  //insert detail_bills
+			                  DETAIL_BILLS detail_BILLS= new DETAIL_BILLS();
+			                  detail_BILLS.setID_BILL(idBills.getID());
+			                  detail_BILLS.setID_DETAIL_SHOE(carts.getDETAILSHOEID());
+			                  detail_BILLS.setCOUNTT(carts.getQUANTITY());
+			                  detail_BILLS.setPRICE(carts.getPrice());
+			                  daoDetailBills.getDaoDetailBills().Insert(detail_BILLS);	                                    
+			            }
+			        }
+			        trangthai = 1;
+				}
+				
+				obMap.put("trangthai", trangthai);
 			}
 			
 			mapper.writeValue(response.getOutputStream(), obMap);

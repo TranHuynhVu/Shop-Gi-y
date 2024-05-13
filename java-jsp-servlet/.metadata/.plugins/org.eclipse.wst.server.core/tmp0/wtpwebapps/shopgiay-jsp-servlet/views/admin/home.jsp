@@ -377,7 +377,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-outline-primary"
 							data-dismiss="modal">Cancel</button>
-						<a href="login.html" class="btn btn-primary">Logout</a>
+						<a href="/shopbangiay-jsp-servlet/dang-nhap?action=login" class="btn btn-primary">Logout</a>
 					</div>
 				</div>
 			</div>

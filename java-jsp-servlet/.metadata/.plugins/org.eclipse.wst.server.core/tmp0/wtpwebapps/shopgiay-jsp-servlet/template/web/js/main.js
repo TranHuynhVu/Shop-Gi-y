@@ -201,7 +201,7 @@
 			"ACTION": "ClickGioHang"
 		};
 		$.ajax({
-			type: "POST", 
+			type: "POST",
 			url: "/shopbangiay-jsp-servlet/api-web-new",
 			data: JSON.stringify(data),
 			contentType: "application/json",
@@ -211,7 +211,7 @@
 				if (response.ACC != null) {
 					$('.header-cart-wrapitem').find('.header-cart-item').remove();
 					$('.header-cart-wrapitem').append(response.html);
-					$('.header-cart-total').text("Total: $"+response.price);
+					$('.header-cart-total').text("Total: $" + response.price);
 					$('.js-panel-cart').addClass('show-header-cart');
 				} else {
 					alert("Vui lòng đăng nhập để xem chi tiết sản phẩm.");
@@ -241,15 +241,8 @@
 
 	/*==================================================================
 	[ +/- num product ]*/
-	$('.btn-num-product-down').on('click', function() {
-		var numProduct = Number($(this).next().val());
-		if (numProduct > 0) $(this).next().val(numProduct - 1);
-	});
 
-	$('.btn-num-product-up').on('click', function() {
-		var numProduct = Number($(this).prev().val());
-		$(this).prev().val(numProduct + 1);
-	});
+
 
 	/*==================================================================
 	[ Rating ]*/
@@ -503,22 +496,21 @@
 			"ACTION": "COMMENT"
 		};
 		$.ajax({
-			type: "POST", 
-			url: "/shopbangiay-jsp-servlet/api-web-new", 
+			type: "POST",
+			url: "/shopbangiay-jsp-servlet/api-web-new",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			dataType: "json",
 			success: function(response) {
 				console.log(response)
 				if (response.ACC != null) {
-					if(response.commentrate == "commentrate"){
+					if (response.commentrate == "commentrate") {
 						alert("Vui lòng nhập comment or chọn sao.");
-					}else{
-						swal("", "is added to wishlist !", "success");
+					} else {
+						swal("", "Comment !", "success");
 						$('#review').val("");
 					}
-					
-					
+
 				} else {
 					alert("Vui lòng đăng nhập để comment.");
 				}
@@ -530,6 +522,119 @@
 
 	});
 
+
+	// update cart
+	$('.UpdateCart').on('click', function() {
+		var rowData = [];
+
+		// Lặp qua mỗi hàng trong bảng
+		$('.table_row').each(function() {
+			// Tạo một đối tượng JSON mới để lưu trữ dữ liệu của mỗi hàng
+			var row = {};
+
+			// Lấy giá trị của thuộc tính "data-id"
+			var id = $(this).find('.num-product-cart').data('id');
+
+			// Lấy giá trị của phần tử có class "num-product-cart"
+			var value = $(this).find('.num-product-cart').val();
+
+			// Thêm cặp key-value vào đối tượng JSON
+			row[id] = value;
+
+			// Thêm đối tượng JSON này vào mảng rowData
+			rowData.push(row);
+		});
+
+		// Hiển thị dữ liệu đã thu thập được
+		console.log(rowData);
+		var data = {
+			"CART": rowData,
+			"ACTION": "MUACARTS"
+		};
+		$.ajax({
+			type: "POST",
+			url: "/shopbangiay-jsp-servlet/api-web-new",
+			data: JSON.stringify(data),
+			contentType: "application/json",
+			dataType: "json",
+			success: function(response) {
+				console.log(response)
+				if (response.ACC != null) {
+					swal("", "Update !", "success");
+					// Xóa các dòng hiện tại trước khi cập nhật HTML mới
+					$('.table-shopping-cart .table_row').remove();
+
+					// Thêm HTML mới cho từng dòng
+					$('.table-shopping-cart').append(response.html);
+					$('.tongtien').text(response.tongtien);
+					location.reload();
+
+				} else {
+					alert("Vui lòng đăng nhập để comment.");
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error("Error sending data:", error);
+			}
+		});
+
+	});
+
+	// đặt hàng
+	$('.mua-Carts').on('click', function() {
+		var rowData = [];
+
+		// Lặp qua mỗi hàng trong bảng
+		$('.table_row').each(function() {
+			// Tạo một đối tượng JSON mới để lưu trữ dữ liệu của mỗi hàng
+			var row = {};
+
+			// Lấy giá trị của thuộc tính "data-id"
+			var id = $(this).find('.num-product-cart').data('id');
+
+			// Lấy giá trị của phần tử có class "num-product-cart"
+			var value = $(this).find('.num-product-cart').val();
+
+			// Thêm cặp key-value vào đối tượng JSON
+			row[id] = value;
+
+			// Thêm đối tượng JSON này vào mảng rowData
+			rowData.push(row);
+		});
+
+		// Hiển thị dữ liệu đã thu thập được
+		console.log(rowData);
+		var data = {
+			"CART": rowData,
+			"ACTION": "MUACARTS"
+		};
+		$.ajax({
+			type: "POST",
+			url: "/shopbangiay-jsp-servlet/api-web-new",
+			data: JSON.stringify(data),
+			contentType: "application/json",
+			dataType: "json",
+			success: function(response) {
+				console.log(response)
+				if (response.ACC != null) {
+					swal("", "Đặt hàng !", "success");
+					// Xóa các dòng hiện tại trước khi cập nhật HTML mới
+					$('.table-shopping-cart .table_row').remove();
+
+					location.reload();
+
+				} else {
+					alert("Vui lòng đăng nhập để comment.");
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error("Error sending data:", error);
+			}
+		});
+
+	});
+
+
 	$('.js-hide-modal1').on('click', function() {
 		$('.js-modal1').removeClass('show-modal1');
 
@@ -537,5 +642,55 @@
 
 	});
 
+	/*	//  gắn sự kiện click cả các phần tử mới thêm vào html
+		$(document).on('click', '.UpdateCart', function() {
+			
+	
+		});*/
+
 
 })(jQuery);
+function btnnumproductdown(e) {
+	var numProduct = Number($(e).next().val());
+	if (numProduct > 0) $(e).next().val(numProduct - 1);
+}
+
+function btnnumproductup(e) {
+	var numProduct = Number($(e).prev().val());
+	$(e).prev().val(numProduct + 1);
+}
+
+function DeleteCart(e) {
+	var id = e.querySelector("div").getAttribute("data-id");
+	console.log(id)
+	var data = {
+		"IDCART": id,
+		"ACTION": "DELETECART"
+	};
+	$.ajax({
+		type: "POST",
+		url: "/shopbangiay-jsp-servlet/api-web-new",
+		data: JSON.stringify(data),
+		contentType: "application/json",
+		dataType: "json",
+		success: function(response) {
+			console.log(response);
+			if (response.ACC != null) {
+				swal("", "Delete !", "success");
+				// Xóa các dòng hiện tại trước khi cập nhật HTML mới
+				$('.table-shopping-cart .table_row').remove();
+				
+				// Thêm HTML mới cho từng dòng
+				$('.table-shopping-cart').append(response.html);
+				
+				$('.tongtien').text("$"+tongtien);
+			} else {
+				swal("", "Delete !", "error"); // Show error message
+			}
+		},
+		error: function(xhr, status, error) {
+			console.error("Error sending data:", error);
+			swal("", "Error !", "error"); // Show error message
+		}
+	})
+}

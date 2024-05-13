@@ -1,0 +1,59 @@
+package com.shopgiay.util;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import java.util.Properties;
+
+public class EmailApiUtil {
+
+	public static void sendEmail(String recipientEmail, String subject, String content) {
+        // Thông tin tài khoản email của người gửi
+        String host = "smtp.gmail.com";
+        String port = "587";
+        String email = "lengochai7304@gmail.com";
+        String password = "aqjw idqr uxho qsei";
+
+        // Cấu hình properties cho kết nối SMTP
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", port);
+
+        // Tạo phiên gửi email
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(email, password);
+            }
+        });
+
+        try {
+            // Tạo đối tượng Message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(email));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+            message.setSubject(subject);
+            message.setText(content);
+
+            // Gửi email
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+ /*   public static void main(String[] args) {
+        // Thay thế các tham số bằng thông tin email thực tế
+        String recipientEmail = "tranhuynhvu2k4@gmail.com";
+        String subject = "Test Email";
+        String content = "This is a test email from EmailSender class.";
+
+        // Gửi email
+        sendEmail(recipientEmail, subject, content);
+    }
+    */
+}

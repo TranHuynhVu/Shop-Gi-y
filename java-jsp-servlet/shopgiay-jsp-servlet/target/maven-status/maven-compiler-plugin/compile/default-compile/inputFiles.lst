@@ -2,6 +2,7 @@ F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\controller\admin\api\NewApi.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\util\JsonUtil.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\dao\MySQLDataAccess.java
+F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\model\CommentsReviews.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\util\SessionUtil.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\model\SIZES.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\dao\imple\daoDetail_Shoes.java
@@ -22,6 +23,8 @@ F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\controller\web\api\ProductdetailApi.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\model\DETAIL_SHOES.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\util\HttpUtil.java
+F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\dao\imple\daoCommentReviews.java
+F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\model\imple\ModelCarts.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\controller\web\ShopingCartController.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\dao\Idao.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\controller\web\AboutController.java
@@ -35,3 +38,4 @@ F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\dao\imple\daoCategories.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\model\IMAGES.java
 F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\dao\imple\daoCarts.java
+F:\Project-Java\java-jsp-servlet\shopgiay-jsp-servlet\src\main\java\com\shopgiay\util\EmailApiUtil.java
