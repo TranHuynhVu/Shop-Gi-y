@@ -2,7 +2,9 @@ package com.shopgiay.model;
 
 import java.sql.Date;
 
-public class BILLS {
+import com.shopgiay.model.imple.ModelBills;
+
+public class BILLS extends ModelBills{
 	private int ID;
 	private Date DATECHECKIN;
 	private Date DATECHECKOUT;

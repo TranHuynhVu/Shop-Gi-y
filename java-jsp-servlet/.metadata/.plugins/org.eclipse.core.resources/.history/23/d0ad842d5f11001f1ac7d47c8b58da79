@@ -1,0 +1,8 @@
+package com.shopgiay.model;
+
+public class Snippet {
+	public static void main(String[] args) {
+		63780.00
+	}
+}
+

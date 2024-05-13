@@ -1,0 +1,9 @@
+package com.shopgiay.service;
+
+import com.shopgiay.dao.imple.daoDetailBills;
+
+public class NewServiceAdmin {
+	public double DoanhThuTheoNam(int nam) {
+		return daoDetailBills.getDaoDetailBills().TongDanhThuTheoNam(nam);
+	}
+}

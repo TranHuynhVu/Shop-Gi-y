@@ -15,6 +15,7 @@
 <link href="<c:url value='/template/admin/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet"
 	type="text/css">
 <link href="<c:url value='/template/admin/css/ruang-admin.min.css'/>" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <title><dec:title default="Home" /></title>
 </head>
 <body id="page-top">
@@ -33,12 +34,15 @@
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
-
+	
 	<script src="<c:url value='/template/admin/vendor/jquery/jquery.min.js'/>"></script>
 	<script src="<c:url value='/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
 	<script src="<c:url value='/template/admin/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
 	<script src="<c:url value='/template/admin/js/ruang-admin.min.js'/>"></script>
 	<script src="<c:url value='/template/admin/vendor/chart.js/Chart.min.js'/>"></script>
-	<script src="<c:url value='/template/admin/js/demo/chart-area-demo.js'/>"></script>
+	<script src="<c:url value='/template/admin/js/demo/chart-area-demo.js'/>"></script>	
+	<script src="<c:url value='/template/admin/js/chartCustuom.js'/>"></script>
+
+	
 </body>
 </html>

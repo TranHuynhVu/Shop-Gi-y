@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.x.protobuf.MysqlxCrud.Delete;
-import com.shopgiay.dao.imple.DETAIL_BILLS;
 import com.shopgiay.dao.imple.daoBills;
 import com.shopgiay.dao.imple.daoCarts;
 import com.shopgiay.dao.imple.daoColos;
@@ -35,6 +34,7 @@ import com.shopgiay.model.BILLS;
 import com.shopgiay.model.CARTS;
 import com.shopgiay.model.COLORS;
 import com.shopgiay.model.CommentsReviews;
+import com.shopgiay.model.DETAIL_BILLS;
 import com.shopgiay.model.DETAIL_SHOES;
 import com.shopgiay.model.IMAGES;
 import com.shopgiay.model.SHOES;

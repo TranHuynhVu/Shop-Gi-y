@@ -63,6 +63,20 @@ public class daoAccounts implements Idao<ACCOUNTS>{
 		con.CloseConetion();
 		return arr;
 	}
+	public int TongSoLuongNguoiDung() {
+		int tong = 0;
+		String sql = "SELECT * FROM ACCOUNTS WHERE POSITION = 'User' ";
+		ResultSet rs = con.getResultSet(sql);
+		try {
+			while (rs.next()) {
+				tong += 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return tong;
+	}
 
 	@Override
 	public ACCOUNTS SelectByID(ACCOUNTS t) {
