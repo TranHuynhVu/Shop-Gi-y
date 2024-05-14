@@ -137,30 +137,28 @@
 				<div class="card mb-4">
 					<div
 						class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary">Products Sold</h6>
+						<h6 class="m-0 font-weight-bold text-primary">Bán chạy</h6>
 						<div class="dropdown no-arrow">
 							<a class="dropdown-toggle btn btn-primary btn-sm" href="#"
 								role="button" id="dropdownMenuLink" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> Month <i
+								aria-haspopup="true" aria-expanded="false"> Tháng <i
 								class="fas fa-chevron-down"></i>
 							</a>
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
 								aria-labelledby="dropdownMenuLink">
-								<div class="dropdown-header">Select Periode</div>
-								<a class="dropdown-item" href="#">Today</a> <a
-									class="dropdown-item" href="#">Week</a> <a
-									class="dropdown-item active" href="#">Month</a> <a
-									class="dropdown-item" href="#">This Year</a>
+								<div class="dropdown-header">Chọn</div>
+								<a class="dropdown-item" href="#">Tuần</a> <a
+									class="dropdown-item" href="#">Năm</a>
 							</div>
 						</div>
 					</div>
 					<div class="card-body">
 						<div class="mb-3">
 							<div class="small text-gray-500">
-								Oblong T-Shirt
+								Nike1
 								<div class="small float-right">
-									<b>600 of 800 Items</b>
+									<b>20 đến 80 Giày</b>
 								</div>
 							</div>
 							<div class="progress" style="height: 12px;">
@@ -171,9 +169,9 @@
 						</div>
 						<div class="mb-3">
 							<div class="small text-gray-500">
-								Gundam 90'Editions
+								Nike2
 								<div class="small float-right">
-									<b>500 of 800 Items</b>
+									<b>20 đến 50 Giày</b>
 								</div>
 							</div>
 							<div class="progress" style="height: 12px;">
@@ -184,9 +182,9 @@
 						</div>
 						<div class="mb-3">
 							<div class="small text-gray-500">
-								Rounded Hat
+								Nike3
 								<div class="small float-right">
-									<b>455 of 800 Items</b>
+									<b>20 đến 30 Giày</b>
 								</div>
 							</div>
 							<div class="progress" style="height: 12px;">
@@ -197,9 +195,9 @@
 						</div>
 						<div class="mb-3">
 							<div class="small text-gray-500">
-								Indomie Goreng
+								Nike4
 								<div class="small float-right">
-									<b>400 of 800 Items</b>
+									<b>10 đến 20 Giày</b>
 								</div>
 							</div>
 							<div class="progress" style="height: 12px;">
@@ -210,17 +208,18 @@
 						</div>
 						<div class="mb-3">
 							<div class="small text-gray-500">
-								Remote Control Car Racing
+								Nike5
 								<div class="small float-right">
-									<b>200 of 800 Items</b>
+									<b>10 đến 20 Giày</b>
 								</div>
 							</div>
 							<div class="progress" style="height: 12px;">
-								<div class="progress-bar bg-success" role="progressbar"
-									style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+								<div class="progress-bar bg-info" role="progressbar"
+									style="width: 50%" aria-valuenow="50" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
 						</div>
+
 					</div>
 					<div class="card-footer text-center">
 						<a class="m-0 small text-primary card-link" href="#">View More
@@ -235,8 +234,9 @@
 					<div
 						class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">Hóa đơn</h6>
-						<a class="m-0 float-right btn btn-danger btn-sm" href="#">Xem
-							thêm<i class="fas fa-chevron-right"></i>
+						<a class="m-0 float-right btn btn-danger btn-sm"
+							href='<c:url value="/admin-chitiet-hoadon"/>'>Xem thêm<i
+							class="fas fa-chevron-right"></i>
 						</a>
 					</div>
 					<div class="table-responsive">
@@ -258,7 +258,8 @@
 										<td>${hoadon.getTongBill()}</td>
 										<td><span class="badge badge-warning">Chưa giải
 												quyết</span></td>
-										<td><a href="#" class="btn btn-sm btn-primary">Xem chi tiết</a></td>
+										<td><a href="#" class="btn btn-sm btn-primary">Xem
+												chi tiết</a></td>
 									</tr>
 
 								</c:forEach>
@@ -273,40 +274,43 @@
 				<div class="card">
 					<div
 						class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-light">Message From
-							Customer</h6>
+						<h6 class="m-0 font-weight-bold text-light">Phản hồi</h6>
 					</div>
 					<div>
 						<div class="customer-message align-items-center">
 							<a class="font-weight-bold" href="#">
-								<div class="text-truncate message-title">Hi there! I am
-									wondering if you can help me with a problem I've been having.</div>
+								<div class="text-truncate message-title">Chào bạn! Tôi là
+									tự hỏi liệu bạn có thể giúp tôi với một vấn đề tôi đang gặp
+									phải không..</div>
 								<div class="small text-gray-500 message-time font-weight-bold">Udin
 									Cilok · 58m</div>
 							</a>
 						</div>
 						<div class="customer-message align-items-center">
-							<a href="#">
-								<div class="text-truncate message-title">But I must
-									explain to you how all this mistaken idea</div>
-								<div class="small text-gray-500 message-time">Nana Haminah
-									· 58m</div>
-							</a>
-						</div>
-						<div class="customer-message align-items-center">
 							<a class="font-weight-bold" href="#">
-								<div class="text-truncate message-title">Lorem ipsum dolor
-									sit amet, consectetur adipiscing elit</div>
-								<div class="small text-gray-500 message-time font-weight-bold">Jajang
-									Cincau · 25m</div>
-							</a>
-						</div>
-						<div class="customer-message align-items-center">
-							<a class="font-weight-bold" href="#">
-								<div class="text-truncate message-title">At vero eos et
-									accusamus et iusto odio dignissimos ducimus qui blanditiis</div>
+								<div class="text-truncate message-title">Chào bạn! Tôi là
+									tự hỏi liệu bạn có thể giúp tôi với một vấn đề tôi đang gặp
+									phải không..</div>
 								<div class="small text-gray-500 message-time font-weight-bold">Udin
-									Wayang · 54m</div>
+									Cilok · 58m</div>
+							</a>
+						</div>
+						<div class="customer-message align-items-center">
+							<a class="font-weight-bold" href="#">
+								<div class="text-truncate message-title">Chào bạn! Tôi là
+									tự hỏi liệu bạn có thể giúp tôi với một vấn đề tôi đang gặp
+									phải không..</div>
+								<div class="small text-gray-500 message-time font-weight-bold">Udin
+									Cilok · 58m</div>
+							</a>
+						</div>
+						<div class="customer-message align-items-center">
+							<a class="font-weight-bold" href="#">
+								<div class="text-truncate message-title">Chào bạn! Tôi là
+									tự hỏi liệu bạn có thể giúp tôi với một vấn đề tôi đang gặp
+									phải không..</div>
+								<div class="small text-gray-500 message-time font-weight-bold">Udin
+									Cilok · 58m</div>
 							</a>
 						</div>
 						<div class="card-footer text-center">
@@ -318,18 +322,9 @@
 				</div>
 			</div>
 		</div>
-		<!--Row-->
 
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<p>
-					Do you like this template ? you can download from <a
-						href="https://github.com/indrijunanda/RuangAdmin"
-						class="btn btn-primary btn-sm" target="_blank"><i
-						class="fab fa-fw fa-github"></i>&nbsp;GitHub</a>
-				</p>
-			</div>
-		</div>
+
+
 
 		<!-- Modal Logout -->
 		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"

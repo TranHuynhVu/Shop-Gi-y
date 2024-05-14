@@ -51,7 +51,7 @@
 						Don't have an account?<a href="#">Sign Up</a>
 					</div>
 					<div class="d-flex justify-content-center">
-						<a href="#">Forgot your password?</a>
+						<a href="<c:url value='/api-quen-mat-khau' />">Forgot your password?</a>
 					</div>
 				</div>
 			</div>

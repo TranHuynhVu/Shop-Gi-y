@@ -1,1 +1,4 @@
-new DataTable('#example');
+
+window.onload = function() {
+   new DataTable('#example');
+};

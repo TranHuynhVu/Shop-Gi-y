@@ -70,13 +70,36 @@ public class daoBills implements Idao<BILLS>{
 		}
 		return bills;
 	}
-	public ArrayList<BILLS> HoaDon_All(){
+	public ArrayList<BILLS> HoaDon_All_Top5(){
 		ArrayList<BILLS> arr = null;
 		String sql= "SELECT A.NAMEE AS ACCOUNT_NAME, DB.ID_BILL, SUM(DB.COUNTT * DB.PRICE) AS TOTAL_AMOUNT\r\n"
 				+ "FROM DETAIL_BILLS DB\r\n"
 				+ "JOIN BILLS B ON DB.ID_BILL = B.ID\r\n"
 				+ "JOIN ACCOUNTS A ON B.ID_ACCOUNT = A.ID\r\n"
 				+ "GROUP BY DB.ID_BILL limit 5;";
+		ResultSet rs = con.getResultSet(sql);
+		try {
+			arr = new ArrayList<BILLS>();
+			while (rs.next()) {
+				BILLS bills= new BILLS();
+				bills.setNameAcc(rs.getString("ACCOUNT_NAME"));
+				bills.setID(rs.getInt("ID_BILL"));
+				bills.setTongBill(rs.getDouble("TOTAL_AMOUNT"));
+				
+				arr.add(bills);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	public ArrayList<BILLS> HoaDon_All(){
+		ArrayList<BILLS> arr = null;
+		String sql= "SELECT A.NAMEE AS ACCOUNT_NAME, DB.ID_BILL, SUM(DB.COUNTT * DB.PRICE) AS TOTAL_AMOUNT\r\n"
+				+ "FROM DETAIL_BILLS DB\r\n"
+				+ "JOIN BILLS B ON DB.ID_BILL = B.ID\r\n"
+				+ "JOIN ACCOUNTS A ON B.ID_ACCOUNT = A.ID\r\n"
+				+ "GROUP BY DB.ID_BILL ;";
 		ResultSet rs = con.getResultSet(sql);
 		try {
 			arr = new ArrayList<BILLS>();

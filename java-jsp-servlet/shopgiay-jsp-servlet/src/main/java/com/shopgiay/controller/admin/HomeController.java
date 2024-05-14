@@ -35,7 +35,7 @@ public class HomeController extends HttpServlet {
 		request.setAttribute("tongSoLuongNguoiDung", tongSoLuongNguoiDung);
 		
 		// Lấy All hóa đơn
-		ArrayList<BILLS> arr_HoaDon = NewServiceAdmin.getNewServiceAdmin().HoaDon_All();
+		ArrayList<BILLS> arr_HoaDon = NewServiceAdmin.getNewServiceAdmin().HoaDon_All_Top5();
 		request.setAttribute("arr_HoaDon", arr_HoaDon);
 		
 		for (BILLS bills : arr_HoaDon) {

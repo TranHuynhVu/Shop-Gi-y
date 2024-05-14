@@ -28,6 +28,9 @@ public class NewServiceAdmin {
 		return daoDetailBills.getDaoDetailBills().chart_Data_TongDanhThuTheoThang(nam);
 	}
 	
+	public ArrayList<BILLS> HoaDon_All_Top5(){
+		return daoBills.getDaoBills().HoaDon_All_Top5();
+	}
 	public ArrayList<BILLS> HoaDon_All(){
 		return daoBills.getDaoBills().HoaDon_All();
 	}

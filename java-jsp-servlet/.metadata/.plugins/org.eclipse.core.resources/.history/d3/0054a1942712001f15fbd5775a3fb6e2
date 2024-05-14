@@ -1,0 +1,137 @@
+package com.shopgiay.dao.imple;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.shopgiay.dao.Idao;
+import com.shopgiay.dao.MySQLDataAccess;
+import com.shopgiay.model.ACCOUNTS;
+import com.shopgiay.model.COLORS;
+import com.shopgiay.model.DETAIL_SHOES;
+import com.shopgiay.model.SHOES;
+import com.shopgiay.model.SIZES;
+
+public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
+	MySQLDataAccess con = null;
+	public static daoDetail_Shoes getdaoDetail_Shoes() {
+		return new daoDetail_Shoes();
+	}
+	public daoDetail_Shoes() {
+		con = new MySQLDataAccess();
+	}
+	
+	@Override
+	public int Insert(DETAIL_SHOES t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int Update(DETAIL_SHOES t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int Delete(DETAIL_SHOES t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<DETAIL_SHOES> SelectAll() {
+		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
+		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail,SH.NAMEE AS Ten_shoes,DS.PRICE AS Gia, (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images FROM DETAIL_SHOES DS JOIN SHOES SH ON DS.ID_SHOE = SH.ID where statuss = 1";
+		ResultSet rs = con.getResultSet(sql);
+		
+		try {
+			while (rs.next()) {
+				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+				detail_SHOES.setIMAGE(rs.getString("images"));
+				arr.add(detail_SHOES);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return arr;
+	}
+
+
+	public ArrayList<DETAIL_SHOES> SelectAllBySortPriceColor(String sqll) {
+		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
+		String sql = sqll;
+		ResultSet rs = con.getResultSet(sql);
+		
+		try {
+			while (rs.next()) {
+				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+				detail_SHOES.setIMAGE(rs.getString("images"));
+				arr.add(detail_SHOES);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return arr;
+	}
+	public ArrayList<DETAIL_SHOES> SelectAllByName(String name) {
+		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
+		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail, SH.NAMEE AS Ten_shoes, DS.PRICE AS Gia,\r\n"
+				+ "    (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images\r\n"
+				+ "FROM DETAIL_SHOES DS\r\n"
+				+ "JOIN SHOES SH ON DS.ID_SHOE = SH.ID\r\n"
+				+ "WHERE SH.NAMEE LIKE '%"+name+"%'";
+		ResultSet rs = con.getResultSet(sql);
+		try {
+			while (rs.next()) {
+				DETAIL_SHOES detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+				detail_SHOES.setIMAGE(rs.getString("images"));
+				arr.add(detail_SHOES);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return arr;
+	}
+	public DETAIL_SHOES SelectAllByID(int id) {
+		DETAIL_SHOES  detail_SHOES= null;
+		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail, SH.NAMEE AS Ten_shoes, DS.PRICE AS Gia\r\n"
+				+ "FROM DETAIL_SHOES DS\r\n"
+				+ "JOIN SHOES SH ON DS.ID_SHOE = SH.ID\r\n"
+				+ "WHERE DS.ID = ?";
+		ResultSet rs = con.getResultSet(sql,id);
+		try {
+			while (rs.next()) {
+				detail_SHOES = new DETAIL_SHOES();
+				detail_SHOES.setID(rs.getInt("Ma_Detail"));
+				detail_SHOES.setID_SHOE(rs.getInt("ID_SHOE"));
+				detail_SHOES.setNAME(rs.getString("Ten_shoes"));
+				detail_SHOES.setPRICE(rs.getDouble("Gia"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return detail_SHOES;
+	}
+	@Override
+	public DETAIL_SHOES SelectByID(DETAIL_SHOES t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

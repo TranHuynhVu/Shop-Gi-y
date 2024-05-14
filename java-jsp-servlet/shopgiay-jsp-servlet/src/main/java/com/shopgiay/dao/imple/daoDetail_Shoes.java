@@ -42,7 +42,7 @@ public class daoDetail_Shoes implements Idao<DETAIL_SHOES>{
 	@Override
 	public ArrayList<DETAIL_SHOES> SelectAll() {
 		ArrayList<DETAIL_SHOES> arr = new ArrayList<DETAIL_SHOES>();
-		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail,SH.NAMEE AS Ten_shoes,DS.PRICE AS Gia, (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images FROM DETAIL_SHOES DS JOIN SHOES SH ON DS.ID_SHOE = SH.ID";
+		String sql = "SELECT DS.ID_SHOE, DS.ID AS Ma_Detail,SH.NAMEE AS Ten_shoes,DS.PRICE AS Gia, (SELECT ID FROM IMAGES WHERE ID_DETAIL_SHOE = DS.ID LIMIT 1) AS images FROM DETAIL_SHOES DS JOIN SHOES SH ON DS.ID_SHOE = SH.ID where ds.statuss = 1";
 		ResultSet rs = con.getResultSet(sql);
 		
 		try {

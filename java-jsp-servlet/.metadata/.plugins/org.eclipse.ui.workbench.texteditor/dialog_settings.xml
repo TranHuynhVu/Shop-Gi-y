@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="MUACARTS"/>
+		<item key="selection" value="m-0 font-weight-bold text-light"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="m-0 font-weight-bold text-light"/>
+			<item value="Products Sold"/>
+			<item value="example_wrapper"/>
+			<item value="table-responsive p-3"/>
+			<item value="m-0 float-right btn btn-danger btn-sm"/>
+			<item value="DataTables documentation."/>
+			<item value="btn btn-primary btn-sm"/>
 			<item value="MUACARTS"/>
 			<item value="mua-Carts"/>
 			<item value="UPDATECART"/>
@@ -16,13 +23,6 @@
 			<item value="version-ruangadmin"/>
 			<item value="Version 1.1"/>
 			<item value="3+"/>
-			<item value="sidebar-brand-icon"/>
-			<item value="alertsDropdown"/>
-			<item value="fileList "/>
-			<item value="list-group"/>
-			<item value="list-group-itemf"/>
-			<item value="list-group-item"/>
-			<item value="fileList"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

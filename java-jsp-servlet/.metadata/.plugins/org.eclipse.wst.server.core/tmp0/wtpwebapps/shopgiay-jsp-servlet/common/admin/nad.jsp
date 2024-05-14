@@ -28,7 +28,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href='<c:url value="/admin-quanly-giay"/>'>Quản lý giày</a>
-            <a class="collapse-item" href='<c:url value="/chitiet-giay"/>'">Quản lý hóa đơn</a>
+            <a class="collapse-item" href='<c:url value="/admin-chitiet-hoadon"/>'">Quản lý hóa đơn</a>
           </div>
         </div>
       </li>
