@@ -101,5 +101,28 @@ public class daoShoes implements Idao<SHOES> {
 		con.CloseConetion();
 		return shoes;
 	}
+	
+	public ArrayList<SHOES> Select_Giay_in_Table(){
+		ArrayList<SHOES> arr = new ArrayList<SHOES>();
+		String sql = "SELECT S.ID AS SHOE_ID, S.NAMEE AS SHOE_NAME, DS.PRICE, DS.COUNTT\r\n"
+				+ "FROM SHOES S\r\n"
+				+ "JOIN DETAIL_SHOES DS ON S.ID = DS.ID_SHOE;";
+		ResultSet rs = con.getResultSet(sql);
+
+		try {
+			while (rs.next()) {
+				SHOES shoes = new SHOES();
+				shoes.setID(rs.getInt("SHOE_ID"));
+				shoes.setNAMEE(rs.getString("SHOE_NAME").toString());
+				shoes.setGia(rs.getDouble("PRICE"));
+				shoes.setSoluong(rs.getInt("COUNTT"));
+				arr.add(shoes);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.CloseConetion();
+		return arr;
+	}
 
 }

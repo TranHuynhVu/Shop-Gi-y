@@ -21,16 +21,16 @@
 			<div class="flex-w flex-tr">
 				<div
 					class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-					<form action="/shopbangiay-jsp-servlet/contact" method = "POST">
+					<form action="/shopbangiay-jsp-servlet/contact" method = "GET">
 						<h4 class="mtext-105 cl2 txt-center p-b-30">Send Us A Message
 						</h4>
 
-						<div class="bor8 m-b-20 how-pos4-parent">
+						<%-- <div class="bor8 m-b-20 how-pos4-parent">
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
 								type="text" name="email" placeholder="Your Email Address">
 							<img class="how-pos4 pointer-none"
 								src="<c:url value='/template/web/images/icons/icon-email.png'/>" alt="ICON">
-						</div>
+						</div> --%>
 
 						<div class="bor8 m-b-30">
 							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"
@@ -53,8 +53,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Address </span>
 
-							<p class="stext-115 cl6 size-213 p-t-18">Coza Store Center
-								8th floor, 379 Hudson St, New York, NY 10018 US</p>
+							<p class="stext-115 cl6 size-213 p-t-18">Trường Đại học Sư phạm kỹ thuật - Đại học Đà Nẳng </p>
 						</div>
 					</div>
 
@@ -66,7 +65,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Lets Talk </span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">+1 800 1236879</p>
+							<p class="stext-115 cl1 size-213 p-t-18">0329317373</p>
 						</div>
 					</div>
 
@@ -78,7 +77,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Sale Support </span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">contact@example.com
+							<p class="stext-115 cl1 size-213 p-t-18">tranhuynhvu2k4@gmail.com
 							</p>
 						</div>
 					</div>

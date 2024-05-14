@@ -34,6 +34,29 @@
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
+	<!-- Modal Logout -->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to logout?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-primary"
+							data-dismiss="modal">Cancel</button>
+						<a href="/shopbangiay-jsp-servlet/dang-nhap?action=login" class="btn btn-primary">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	
 	<script src="<c:url value='/template/admin/vendor/jquery/jquery.min.js'/>"></script>
 	<script src="<c:url value='/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
@@ -42,6 +65,19 @@
 	<script src="<c:url value='/template/admin/vendor/chart.js/Chart.min.js'/>"></script>
 	<script src="<c:url value='/template/admin/js/demo/chart-area-demo.js'/>"></script>	
 	<script src="<c:url value='/template/admin/js/chartCustuom.js'/>"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"></script>
+	<script src="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap4.css"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+	<script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap4.js"></script>
+	
+
+
+
+		<script src="<c:url value='/template/admin/js/main.js'/>"></script>
+
 
 	
 </body>

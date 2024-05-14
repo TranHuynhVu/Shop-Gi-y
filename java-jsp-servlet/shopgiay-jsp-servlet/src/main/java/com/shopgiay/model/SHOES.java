@@ -6,6 +6,25 @@ public class SHOES  extends CATEGORIES{
 	private String DETAIL;
 	private boolean STATUSS;
 	private int ID_TRADEMARK;
+	
+	private double gia;
+	private int soluong;
+
+	public double getGia() {
+		return gia;
+	}
+
+	public void setGia(double gia) {
+		this.gia = gia;
+	}
+
+	public int getSoluong() {
+		return soluong;
+	}
+
+	public void setSoluong(int soluong) {
+		this.soluong = soluong;
+	}
 
 	public SHOES(String nAMEE) {
 		NAMEE = nAMEE;

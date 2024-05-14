@@ -1,0 +1,117 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chi tiết giày</title> .form-container { max-width: 600px; margin:
+50px auto; padding: 30px; background-color: #fff; border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); } .form-title { text-align:
+center; margin-bottom: 30px; font-size: 24px; color: #333; font-weight:
+bold; } .form-group label { font-weight: bold; color: #555; }
+.btn-primary { background-color: #007bff; border-color: #007bff; }
+.btn-primary:hover { background-color: #0056b3; border-color: #0056b3; }
+.file-list { margin-top: 20px; }
+</style>
+</head>
+<body>
+	<div class="container">
+    <div class="form-container">
+        <a class="m-0 float-right btn btn-danger btn-sm" href="/shopbangiay-jsp-servlet/admin-quanly-giay">
+            Quay trở lại <i class="fas fa-chevron-right"></i>
+        </a>
+        <form>
+            <!-- Image Upload Inputs -->
+            <div class="form-group">
+                <label for="imageUpload">Upload Hình Ảnh</label>
+                <input type="file" class="form-control-file" id="imageUpload" accept="image/*" multiple>
+            </div>
+
+            <div id="fileList" class="file-list">
+                <ul class="list-group"></ul>
+            </div>
+
+            <!-- Text Input Fields -->
+            <div class="form-group">
+                <label for="inputMaGiay">Mã giày</label>
+                <input type="text" class="form-control" id="inputMaGiay" placeholder="Nhập dữ liệu vào đây">
+            </div>
+            <div class="form-group">
+                <label for="inputTenGiay">Tên giày</label>
+                <input type="text" class="form-control" id="inputTenGiay" placeholder="Nhập dữ liệu vào đây">
+            </div>
+            <div class="form-group">
+                <label for="inputChiTiet">Chi tiết</label>
+                <input type="text" class="form-control" id="inputChiTiet" placeholder="Nhập dữ liệu vào đây">
+            </div>
+            <div class="form-group">
+                <label for="inputGia">Giá</label>
+                <input type="text" class="form-control" id="inputGia" placeholder="Nhập dữ liệu vào đây">
+            </div>
+            <div class="form-group">
+                <label for="inputSoLuong">Số lượng</label>
+                <input type="text" class="form-control" id="inputSoLuong" placeholder="Nhập dữ liệu vào đây">
+            </div>
+
+            <div class="form-group">
+                <label for="selectMau">Màu sắc</label>
+                <select class="form-control" id="selectMau">
+                    <option>Chọn màu</option>
+                    <option>Đỏ</option>
+                    <option>Xanh</option>
+                    <option>Trắng</option>
+                    <option>Xám</option>
+                </select>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">Thêm</button>
+                <button type="submit" class="btn btn-warning btn-block">Sửa</button>
+                <button type="submit" class="btn btn-danger btn-block">Xóa</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$('#imageUpload')
+									.on(
+											'change',
+											function() {
+												var fileList = $('#fileList');
+												fileList.empty();
+												var files = this.files;
+												if (files.length > 0) {
+													var list = $('<ul class="list-group"></ul>');
+													for (var i = 0; i < files.length; i++) {
+														var fileName = files[i].name;
+														var fileItem = $(
+																'<li class="list-group-item"></li>')
+																.text(fileName);
+														list.append(fileItem);
+													}
+													fileList.append(list);
+												}
+												var liTexts = [];
+												$('#fileList li')
+														.each(
+																function() {
+																	liTexts
+																			.push($(
+																					this)
+																					.text());
+																});
+												console.log(liTexts)
+											});
+						});
+	</script>
+</body>
+</html>

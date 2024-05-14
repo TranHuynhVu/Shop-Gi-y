@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="js-show-cart"/>
+		<item key="selection" value="MUACARTS"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="js-show-cart"/>
-			<item value="icon-header-noti"/>
-			<item value="item-slick1 slick-slide"/>
-			<item value="size-209"/>
+			<item value="MUACARTS"/>
+			<item value="mua-Carts"/>
+			<item value="UPDATECART"/>
+			<item value="UPDATECARTS"/>
 			<item value="UpdateCart"/>
-			<item value="btn-num-product-up"/>
-			<item value=".table-shopping-cart .column-5 {"/>
-			<item value="ClickGioHang"/>
-			<item value=".size-119"/>
-			<item value=".bor13"/>
-			<item value="Free shipping for standard order"/>
-			<item value="activeMenu"/>
-			<item value="shopingcart"/>
-			<item value="w-full"/>
-			<item value="nameProduct"/>
+			<item value="version-ruangadmin"/>
+			<item value="Version 1.1"/>
+			<item value="3+"/>
+			<item value="sidebar-brand-icon"/>
+			<item value="alertsDropdown"/>
+			<item value="fileList "/>
+			<item value="list-group"/>
+			<item value="list-group-itemf"/>
+			<item value="list-group-item"/>
+			<item value="fileList"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1481"/>
-		<item key="DIALOG_Y_ORIGIN" value="160"/>
+		<item key="DIALOG_X_ORIGIN" value="1417"/>
+		<item key="DIALOG_Y_ORIGIN" value="385"/>
 		<item key="DIALOG_WIDTH" value="414"/>
-		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_HEIGHT" value="389"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>

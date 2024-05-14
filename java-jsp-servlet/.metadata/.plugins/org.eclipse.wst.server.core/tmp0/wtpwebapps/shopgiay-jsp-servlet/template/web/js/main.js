@@ -549,7 +549,7 @@
 		console.log(rowData);
 		var data = {
 			"CART": rowData,
-			"ACTION": "MUACARTS"
+			"ACTION": "UPDATECART"
 		};
 		$.ajax({
 			type: "POST",
